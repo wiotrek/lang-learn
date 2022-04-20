@@ -1,0 +1,35 @@
+<div class="wrapper">
+
+  <h1 class="wrapper__headline">
+    Wybierz język którego chcesz się nauczyć
+  </h1>
+
+  <div class="wrapper__container">
+
+    <button
+      mat-raised-button
+      color="basic"
+      class="wrapper__container__card"
+      *ngFor="let country of langsAvaliable"
+    >
+
+      <div class="wrapper__container__card__inner">
+
+        <div class="wrapper__container__card__inner__flag">
+          <img
+            [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag"
+            style="max-width: 30px"
+          >
+        </div>
+
+        <div class="wrapper__container__card__inner__text">
+          {{country.name}}
+        </div>
+
+      </div>
+
+    </button>
+
+  </div>
+
+</div>
