@@ -10,7 +10,7 @@ export const LangAvaliable = [
     flag: 'a/ae/Flag_of_the_United_Kingdom.svg'
   },
   {
-    name:'gr_GR',
+    name:'gr-GR',
     display: 'German',
     flag: 'b/ba/Flag_of_Germany.svg'
   }

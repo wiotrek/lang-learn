@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter, map, Subscription } from 'rxjs';
 import { LangAvaliable } from '../shared/consts/lang-avaliable.const';
 
 @Component({
@@ -7,7 +8,7 @@ import { LangAvaliable } from '../shared/consts/lang-avaliable.const';
   templateUrl: './exercises.component.html',
   styleUrls: ['./exercises.component.scss']
 })
-export class ExercisesComponent {
+export class ExercisesComponent implements OnDestroy {
 
   chosenCountry: {
     name: string;
@@ -18,14 +19,34 @@ export class ExercisesComponent {
   exNumber: string | undefined;
   langAvaliable = LangAvaliable;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  subscription: Subscription | undefined;
 
-    // get number of exercise from url
-    this.exNumber = this.activatedRoute.firstChild?.snapshot.paramMap
-      .get('ex-number') ?? "1";
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
+
+    this.subscription = this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        map(() => this.activatedRoute),
+        map((route: ActivatedRoute) => {
+          while (route.firstChild) route = route.firstChild;
+          return route;
+        })
+      )
+      .subscribe(
+        (route: ActivatedRoute) => this.exNumber = route.snapshot.url[0]
+          ? route.snapshot.url[0].path.slice(3, 5)
+          : '00'
+      );
 
     // get lang value from localstorage
     this.chosenCountry = this.langAvaliable.find(lang =>
       lang.name === localStorage.getItem('language'));
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 }
