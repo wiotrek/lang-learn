@@ -1,37 +1,41 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { LocalizationService } from '../core/internationalization/_services/localization.service';
+import { LangAvaliable } from '../shared/consts/lang-avaliable.const';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnDestroy {
 
-  langsAvaliable = [
-    {
-      name: 'French',
-      flag: 'c/c3/Flag_of_France.svg'
-    },
-    {
-      name: 'English',
-      flag: 'a/ae/Flag_of_the_United_Kingdom.svg'
-    },
-    {
-      name: 'German',
-      flag: 'b/ba/Flag_of_Germany.svg'
-    }
-  ]
+  // import array witch countries
+  langsAvaliable = LangAvaliable;
 
   constructor(
-    @Inject(DOCUMENT) private document: any
+    @Inject(DOCUMENT) private document: any,
+    private localizationService: LocalizationService,
+    private router: Router
   ) {
 
-    // other background color in sign in
+    // other background color in home
     this.document.body.classList.add('home-page');
   }
 
-  ngOnInit(): void {
+  learnStart(lang: string): void {
+
+    // set lang in internationalization module
+    localStorage.setItem('language', lang);
+    this.localizationService.initService().then();
+
+    this.router.navigate(['exercises']);
   }
 
+  ngOnDestroy(): void {
+
+    // other background color in home
+    this.document.body.classList.remove('home-page');
+  }
 }

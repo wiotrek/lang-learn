@@ -1,17 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { LangAvaliable } from '../shared/consts/lang-avaliable.const';
 
 @Component({
   selector: 'app-exercises',
   templateUrl: './exercises.component.html',
   styleUrls: ['./exercises.component.scss']
 })
-export class ExercisesComponent implements OnInit {
+export class ExercisesComponent {
 
-  lang = '';
+  chosenCountry: {
+    name: string;
+    display: string;
+    flag: string;
+  } | undefined;
 
-  constructor() { }
+  exNumber: string | undefined;
+  langAvaliable = LangAvaliable;
 
-  ngOnInit(): void {
+  constructor(private activatedRoute: ActivatedRoute) {
+
+    // get number of exercise from url
+    this.exNumber = this.activatedRoute.firstChild?.snapshot.paramMap
+      .get('ex-number') ?? "1";
+
+    // get lang value from localstorage
+    this.chosenCountry = this.langAvaliable.find(lang =>
+      lang.name === localStorage.getItem('language'));
   }
-
 }

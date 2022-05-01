@@ -1,1 +1,32 @@
-<p>Your choice lang is {{lang}}</p>
+<div class="wrapper">
+
+  <h4 class="wrapper__headline">
+
+    <div class="wrapper__headline__left">
+
+      <img
+        *ngIf="chosenCountry?.flag"
+        [src]="'https://upload.wikimedia.org/wikipedia/commons/' + chosenCountry?.flag"
+        style="max-width: 25px"
+      >
+
+      {{'exercises.intro.choice' | translate}}
+
+    </div>
+
+    <div
+      class="wrapper__headline__right"
+      *ngIf="exNumber"
+    >
+
+      Ćwiczenie nr. {{exNumber}}
+
+    </div>
+
+  </h4>
+
+  <p class="wrapper__ex-number" *ngIf="exNumber"></p>
+
+  <div class="wrapper__main"><router-outlet></router-outlet></div>
+
+</div>

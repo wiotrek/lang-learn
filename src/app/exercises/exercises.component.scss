@@ -1,0 +1,14 @@
+.wrapper {
+
+  &__headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    &__left {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+  }
+}

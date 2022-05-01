@@ -10,12 +10,16 @@ import {MatButtonModule} from "@angular/material/button";
 import { HomeComponent } from './home/home.component';
 import { ExercisesComponent } from './exercises/exercises.component';
 import { CoreModule } from "./core/core.module";
+import { Ex01Component } from './exercises/ex01/ex01.component';
+import { Ex00Component } from './exercises/ex00/ex00.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ExercisesComponent
+    ExercisesComponent,
+    Ex01Component,
+    Ex00Component
   ],
   imports: [
     BrowserModule,

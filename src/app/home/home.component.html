@@ -11,6 +11,7 @@
       color="basic"
       class="wrapper__container__card"
       *ngFor="let country of langsAvaliable"
+      (click)="learnStart(country.name)"
     >
 
       <div class="wrapper__container__card__inner">
@@ -23,7 +24,7 @@
         </div>
 
         <div class="wrapper__container__card__inner__text">
-          {{country.name}}
+          {{country.display}}
         </div>
 
       </div>

@@ -4,7 +4,9 @@ import { LocalizationConfigService } from 'src/app/core/internationalization/_se
 
 export const LanguagesDirectory: { [key: string]: string } = {
   en: 'en-US',
-  pl: 'pl-PL'
+  pl: 'pl-PL',
+  fr: 'fr-FR',
+  gr: 'gr-GR'
 };
 
 // Class representing the translation service
