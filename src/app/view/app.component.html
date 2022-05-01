@@ -1,16 +1,33 @@
 <div class="wrapper">
 
   <mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
       <mat-icon>menu</mat-icon>
     </button>
+
     <span class="wrapper__title">Lang Learn Application</span>
+
+    <mat-menu #menu="matMenu" xPosition="before">
+
+      <button
+        mat-menu-item
+        routerLink="home"
+      >
+        strona główna
+      </button>
+
+      <button mat-menu-item>ustawienia</button>
+
+    </mat-menu>
+
   </mat-toolbar>
 
-  <div class="wrapper__mid">
-
-    <router-outlet></router-outlet>
-
-  </div>
+  <div class="wrapper__mid"><router-outlet></router-outlet></div>
 
 </div>

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Ex00Component implements OnInit {
 
+  amount = 7;
+
   constructor() { }
 
   ngOnInit(): void {

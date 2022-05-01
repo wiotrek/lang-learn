@@ -12,6 +12,7 @@ import { ExercisesComponent } from './exercises/exercises.component';
 import { CoreModule } from "./core/core.module";
 import { Ex01Component } from './exercises/ex01/ex01.component';
 import { Ex00Component } from './exercises/ex00/ex00.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -21,15 +22,16 @@ import { Ex00Component } from './exercises/ex00/ex00.component';
     Ex01Component,
     Ex00Component
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    CoreModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        CoreModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatMenuModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
