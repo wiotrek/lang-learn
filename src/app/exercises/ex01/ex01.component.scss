@@ -1,0 +1,24 @@
+.wrapper {
+
+  &__column {
+
+    &__element {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 160px;
+
+      fa-icon {
+        color: rgba(4, 222, 211, 1);
+      }
+
+      input {
+        border: 0;
+        background-color: rgba(167, 211, 166, .7);
+        padding: 5px;
+        width: 120px;
+        border-radius: 5px;
+      }
+    }
+  }
+}

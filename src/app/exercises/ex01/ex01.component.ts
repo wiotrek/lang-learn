@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faDog } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-ex01',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ex01.component.scss']
 })
 export class Ex01Component implements OnInit {
+
+  faDog = faDog;
 
   constructor() { }
 
