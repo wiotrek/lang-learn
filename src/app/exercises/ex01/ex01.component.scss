@@ -1,24 +1,36 @@
-.wrapper {
 
-  &__column {
+@media (min-width: 0) {
+  .wrapper {
 
-    &__element {
+    &__column {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 160px;
+      flex-direction: column;
+      flex-wrap: wrap;
+      gap: 10px;
 
-      fa-icon {
-        color: rgba(4, 222, 211, 1);
-      }
+      &__element {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 190px;
 
-      input {
-        border: 0;
-        background-color: rgba(167, 211, 166, .7);
-        padding: 5px;
-        width: 120px;
-        border-radius: 5px;
+        input {
+          border: 0;
+          background-color: rgba(167, 211, 166, .7);
+          padding: 5px;
+          width: 120px;
+          border-radius: 5px;
+          text-align: center;
+        }
       }
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .wrapper {
+    &__column {
+      height: 200px;
     }
   }
 }

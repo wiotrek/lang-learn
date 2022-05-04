@@ -2,19 +2,24 @@
 
   <h2 class="wrapper__headline">nazwij zwierzątka z ikony</h2>
 
-  <div class="wrapper__column">
+  <ul class="wrapper__column">
 
-    <div class="wrapper__column__element">
+    <li class="wrapper__column__element" *ngFor="let el of list; index as i">
 
-      <fa-icon [icon]="faDog"></fa-icon>
+      <div class="wrapper__column__element__seq">
+        {{i + 1}}.
+      </div>
 
-      <input
-        class="wrapper__column__element__text"
-      >
+      <fa-icon
+        [icon]="el.icon"
+        [ngStyle]="{'color': el.color}"
+      ></fa-icon>
 
-    </div>
+      <input class="wrapper__column__element__text">
+
+    </li>
 
 
-  </div>
+  </ul>
 
 </div>
