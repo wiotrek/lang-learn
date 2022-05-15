@@ -2,6 +2,29 @@
   "exercises": {
     "intro": {
       "choice": "You chosen English language"
+    },
+    "ex01": {
+      "animals": {
+        "dog": "Dog",
+        "cat": "Cat",
+        "frog": "Frog",
+        "bug": "Bug",
+        "fish": "Fish",
+        "hippo": "Hippopotamus",
+        "horse": "Horse",
+        "cow": "Cow",
+        "dragon": "Dragon",
+        "crow": "Crow"
+      },
+      "buttons": {
+        "check-btn": "check task",
+        "reset-btn": "reset",
+        "next-btn": "Go to next task"
+      },
+      "summary": {
+        "next-page": "Congratulations you can go to next",
+        "result": "Your result: "
+      }
     }
   }
 }

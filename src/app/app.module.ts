@@ -15,6 +15,9 @@ import { Ex00Component } from './exercises/ex00/ex00.component';
 import {MatMenuModule} from "@angular/material/menu";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatInputModule} from "@angular/material/input";
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import { IdStrListPipe } from './exercises/ex01/_pipes/id-str-list.pipe';
+import { Ex02Component } from './exercises/ex02/ex02.component';
 
 @NgModule({
   declarations: [
@@ -22,20 +25,23 @@ import { MatInputModule} from "@angular/material/input";
     HomeComponent,
     ExercisesComponent,
     Ex01Component,
-    Ex00Component
+    Ex00Component,
+    IdStrListPipe,
+    Ex02Component
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    CoreModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatInputModule,
-    FontAwesomeModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        CoreModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatInputModule,
+        FontAwesomeModule,
+        DragDropModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

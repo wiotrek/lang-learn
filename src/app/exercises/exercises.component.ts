@@ -17,7 +17,7 @@ export class ExercisesComponent implements OnDestroy {
   } | undefined;
 
   exNumber: string | undefined;
-  langAvaliable = LangAvaliable;
+  langAvailable = LangAvaliable;
 
   subscription: Subscription | undefined;
 
@@ -42,7 +42,7 @@ export class ExercisesComponent implements OnDestroy {
       );
 
     // get lang value from localstorage
-    this.chosenCountry = this.langAvaliable.find(lang =>
+    this.chosenCountry = this.langAvailable.find(lang =>
       lang.name === localStorage.getItem('language'));
   }
 

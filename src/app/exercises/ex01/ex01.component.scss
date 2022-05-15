@@ -1,3 +1,4 @@
+@import "src/app/shared/style/variable";
 
 @media (min-width: 0) {
   .wrapper {
@@ -12,15 +13,78 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 190px;
+        width: 230px;
 
-        input {
+        fa-icon { font-size: 1.1rem; }
+
+        &__text {
           border: 0;
           background-color: rgba(167, 211, 166, .7);
           padding: 5px;
           width: 120px;
           border-radius: 5px;
           text-align: center;
+          cursor: not-allowed;
+
+          &--insert {
+            background-color: $cool-green;
+            color: white;
+          }
+        }
+
+        &__mat-icon {
+          opacity: 0;
+          color: red;
+          font-size: 1rem;
+
+          &--show { opacity: 1; }
+          &--correct { color: $cool-green; }
+        }
+      }
+    }
+
+    &__container-names {
+      background-color: rgba(167, 211, 166, .7);
+      padding: 15px;
+      display: flex;
+      gap: 20px;
+      border-radius: 5px;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      &__item {
+        padding: 5px;
+        width: 120px;
+        background-color: white;
+        border-radius: 5px;
+        text-align: center;
+        transition: background-color .3s ease-in-out;
+        cursor: grab !important;
+
+        &:hover, &--cdk-preview {
+          background-color: $cool-green;
+          color: white;
+        }
+      }
+    }
+
+    &__check-bar {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__left {
+        display: flex;
+        gap: 15px;
+      }
+
+      &__right {
+        display: flex;
+        gap: 10px;
+
+        span:first-child {
+          color: $cool-green;
         }
       }
     }
