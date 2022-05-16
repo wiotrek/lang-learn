@@ -1,1 +1,29 @@
-<p>ex02 works!</p>
+<div class="wrapper">
+
+  <h2 class="wrapper__headline">Ułóż słowa w odpowiedniej kolejności</h2>
+
+
+  <div class="wrapper__column">
+
+    <div
+      class="wrapper__column__row"
+      *ngFor="let list of listOfShuffleWords"
+    >
+      <div class="wrapper__column__row__list-id">{{list.id}}.</div>
+
+      <div class="wrapper__column__row__word-container">
+
+        <div
+          class="wrapper__column__row__word-container__word"
+          *ngFor="let word of list.words"
+        >
+          {{word}}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

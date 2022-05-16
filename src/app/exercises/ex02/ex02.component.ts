@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-ex02',
   templateUrl: './ex02.component.html',
   styleUrls: ['./ex02.component.scss']
 })
-export class Ex02Component implements OnInit {
+export class Ex02Component {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  listOfShuffleWords = [
+    {
+      id: 1,
+      words: [
+        'Hello', ',', 'I am', 'Jonny Knoxville',
+      ]
+    }
+  ];
 
 }
