@@ -1,0 +1,36 @@
+<div class="summary">
+
+  <div class="summary__left-side">
+
+    <button
+      class="wrapper__left-side__btn"
+      mat-raised-button
+      color="primary"
+      (click)="buttonsEvent('check')"
+    >
+      {{'shared.components.summary.check-btn' | translate}}
+    </button>
+
+    <button
+      class="wrapper__check-bar__btn"
+      mat-raised-button
+      color="warn"
+      (click)="buttonsEvent('reset')"
+    >
+      {{'shared.components.summary.reset-btn' | translate}}
+    </button>
+
+  </div>
+
+  <div class="summary__right-side" *ngIf="isChecking">
+    <button
+      class="summary__right-side__btn"
+      mat-stroked-button
+      color="accent"
+      (click)="buttonsEvent('next')"
+    >
+      {{'shared.components.summary.next-btn' | translate}}
+    </button>
+  </div>
+
+</div>

@@ -1,7 +1,11 @@
 <div class="wrapper">
 
-  <h2 class="wrapper__headline">Ułóż słowa w odpowiedniej kolejności</h2>
-
+  <app-task-headline
+    [headline]="'Uporządkuj słowa'"
+    [isChecking]="isChecking"
+    [amount]="listOfShuffleWords.length"
+    [score]="result"
+  ></app-task-headline>
 
   <div class="wrapper__column">
 
@@ -25,5 +29,10 @@
     </div>
 
   </div>
+
+  <app-summary
+    [isChecking]="isChecking"
+    (summaryEvents)="summaryEvents($event)"
+  ></app-summary>
 
 </div>

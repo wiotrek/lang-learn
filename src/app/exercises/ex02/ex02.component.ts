@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ShuffleWordsArray } from "./_arrays/shuffle-words.array";
+import { SummaryBtnType } from "../../shared/components/summary/_types/summary-btn.type";
 
 @Component({
   selector: 'app-ex02',
@@ -7,13 +9,13 @@ import { Component } from '@angular/core';
 })
 export class Ex02Component {
 
-  listOfShuffleWords = [
-    {
-      id: 1,
-      words: [
-        'Hello', ',', 'I am', 'Jonny Knoxville',
-      ]
-    }
-  ];
+  isChecking = false;
 
+  result = 0;
+
+  listOfShuffleWords = ShuffleWordsArray;
+
+  summaryEvents(btn: SummaryBtnType): void {
+    console.log(btn);
+  }
 }

@@ -8,6 +8,7 @@
       flex-direction: column;
       flex-wrap: wrap;
       gap: 10px;
+      margin-bottom: 30px;
 
       &__row {
         display: flex;
@@ -43,5 +44,11 @@
         }
       }
     }
+  }
+}
+
+@media (min-width: $min-desktop) {
+  .wrapper__column {
+    max-height: 200px;
   }
 }

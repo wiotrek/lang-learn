@@ -1,4 +1,4 @@
-export const LangAvaliable = [
+export const LangAvailableArray = [
   {
     name:'fr-FR',
     display: 'French',

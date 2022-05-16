@@ -1,0 +1,12 @@
+@import "src/app/shared/style/variable";
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__left-side {
+    display: flex;
+    gap: 10px;
+  }
+}

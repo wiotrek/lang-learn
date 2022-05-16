@@ -26,5 +26,17 @@
         "result": "Your result: "
       }
     }
+  },
+  "shared": {
+    "components": {
+      "summary": {
+        "check-btn": "Check task",
+        "reset-btn": "Reset",
+        "next-btn": "Go to next task"
+      },
+      "task-headline": {
+        "result": "Your result: "
+      }
+    }
   }
 }

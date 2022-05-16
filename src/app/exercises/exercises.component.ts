@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map, Subscription } from 'rxjs';
-import { LangAvaliable } from '../shared/consts/lang-avaliable.const';
+import { LangAvailableArray } from '../shared/arrays/lang-available.array';
 
 @Component({
   selector: 'app-exercises',
@@ -17,7 +17,7 @@ export class ExercisesComponent implements OnDestroy {
   } | undefined;
 
   exNumber: string | undefined;
-  langAvailable = LangAvaliable;
+  langAvailable = LangAvailableArray;
 
   subscription: Subscription | undefined;
 

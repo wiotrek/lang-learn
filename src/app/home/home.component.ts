@@ -2,7 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalizationService } from '../core/internationalization/_services/localization.service';
-import { LangAvaliable } from '../shared/consts/lang-avaliable.const';
+import { LangAvailableArray } from '../shared/arrays/lang-available.array';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,7 @@ import { LangAvaliable } from '../shared/consts/lang-avaliable.const';
 export class HomeComponent implements OnDestroy {
 
   // import array witch countries
-  langsAvaliable = LangAvaliable;
+  langsAvaliable = LangAvailableArray;
 
   constructor(
     @Inject(DOCUMENT) private document: any,
