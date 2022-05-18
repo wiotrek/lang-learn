@@ -12,6 +12,9 @@
     <div
       class="wrapper__column__row"
       *ngFor="let list of listOfShuffleWords"
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      (cdkDropListDropped)="drop($event, list.id)"
     >
       <div class="wrapper__column__row__list-id">{{list.id}}.</div>
 
@@ -20,6 +23,7 @@
         <div
           class="wrapper__column__row__word-container__word"
           *ngFor="let word of list.words"
+          cdkDrag
         >
           {{word}}
         </div>

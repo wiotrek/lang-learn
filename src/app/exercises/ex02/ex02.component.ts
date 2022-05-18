@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ShuffleWordsArray } from "./_arrays/shuffle-words.array";
 import { SummaryBtnType } from "../../shared/components/summary/_types/summary-btn.type";
+import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-ex02',
@@ -17,5 +18,15 @@ export class Ex02Component {
 
   summaryEvents(btn: SummaryBtnType): void {
     console.log(btn);
+  }
+
+  drop(event: CdkDragDrop<string[]>, id: number): void {
+    moveItemInArray(
+      this.listOfShuffleWords[
+        this.listOfShuffleWords.findIndex(x => x.id === id)
+      ].words,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 }
