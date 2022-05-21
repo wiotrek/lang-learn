@@ -14,9 +14,15 @@ export class Ex03Component implements OnInit, OnDestroy {
   // header options
   isCheck = false;
   result = 0;
+  amount = 0;
 
   workingTxtArray: string[] = [];
   answers: Answers[] = [];
+
+  userChoice: {
+    id: number;
+    val: string;
+  }[] = [];
 
   private subscription: Subscription | undefined;
 
@@ -28,11 +34,51 @@ export class Ex03Component implements OnInit, OnDestroy {
       .subscribe((txtObj: WorkingTextModel) => {
         this.workingTxtArray = txtObj.working_text.split('{var}');
         this.answers = txtObj.answers;
+        this.amount = txtObj.answers.length;
+
+        let i = 0;
+        while (i < this.answers.length) {
+          this.userChoice.push({ id: i, val: '' });
+          i++;
+        }
       });
   }
 
   summaryEvents(btn: SummaryBtnType): void {
-    return;
+    switch (btn) {
+      case "check":
+        this.check();
+        break;
+      case "reset":
+        this.reset();
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  fillUserChoice(txt: any, id: number): void {
+    this.userChoice[id].val = txt.target.value;
+  }
+
+  private check(): void {
+
+    // if check is already then end of function
+    if (this.isCheck) { return; }
+
+    this.isCheck = true;
+
+    this.result = this.userChoice.reduce(
+      (acc: number, curr: { id: number, val: string }) => {
+
+        return acc + (curr.val === this.answers[curr.id].correct ? 1 : 0)
+      }, 0
+    );
+  }
+
+  private reset(): void {
+    this.isCheck = false;
   }
 
   ngOnDestroy() { this.subscription?.unsubscribe(); }

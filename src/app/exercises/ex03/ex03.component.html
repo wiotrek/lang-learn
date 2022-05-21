@@ -3,7 +3,7 @@
   <app-task-headline
     [headline]="'Uzupełnij tekst'"
     [isChecking]="isCheck"
-    [amount]="0"
+    [amount]="amount"
     [score]="result"
   ></app-task-headline>
 
@@ -23,16 +23,28 @@
         <select
           class="wrapper__main__column__sentence-container__ch-word"
           *ngIf="i < answers.length"
+          (change)="fillUserChoice($event, i)"
+          [ngClass]="{
+            'wrapper__main__column__sentence-container__ch-word--not-check': !isCheck,
+            'wrapper__main__column__sentence-container__ch-word--correct':
+              userChoice[i].val === answers[i].correct
+          }"
         >
 
           <option selected></option>
-
-          <option *ngFor="let word of (answers | selectAnswers: i)">
+          <option
+            *ngFor="let word of (answers | selectAnswers: i)"
+            [value]="word"
+          >
             {{word}}
           </option>
 
         </select>
 
+      </div>
+
+      <div class="wrapper__main__column__copyright">
+        source: African lion, facts and photos, https://www.nationalgeographic.com/animals/mammals/facts/african-lion
       </div>
 
     </div>
