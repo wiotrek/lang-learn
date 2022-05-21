@@ -1,7 +1,7 @@
 {
   "exercises": {
     "intro": {
-      "choice": "You chosen English language"
+      "choice": "Selected language: English"
     },
     "ex01": {
       "animals": {
@@ -32,7 +32,7 @@
       "summary": {
         "check-btn": "Check task",
         "reset-btn": "Reset",
-        "next-btn": "Go to next task"
+        "next-btn": "Go to the next task"
       },
       "task-headline": {
         "result": "Your result: "

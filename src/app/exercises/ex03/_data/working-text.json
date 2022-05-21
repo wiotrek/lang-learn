@@ -1,17 +1,60 @@
 {
-  "working_text": "some text bla bla {myVariable} blablal dupa dupa {myVariable} blabla",
+  "working_text": "African {var} have been admired throughout history for as symbols of {var} and strength. These iconic animals have {var} bodies — in the {var} family, they’re second in size only to {var}— and roars that can be heard from five miles away. An {var} lion’s coat is yellow-gold, and {var} have some light spots that disappear with age. Only {var} lions typically boast manes, the {var} fringe of long hair that encircles their heads.",
   "answers": [
     {
       "all": [
-        "dupa", "dupa2", "dupa3", "dupa4"
+        "tigers", "cat", "juveniles", "lions"
       ],
-      "correct": "dupa4"
+      "correct": "lions"
     },
     {
       "all": [
-        "kupa", "kupa2", "kupa3", "kupa4"
+        "powerful", "courage", "impressive"
       ],
-      "correct": "kupa2"
+      "correct": "courage"
+    },
+    {
+      "all": [
+        "impressive", "courage", "powerful", "juveniles"
+      ],
+      "correct": "powerful"
+    },
+    {
+      "all": [
+        "cat", "tigers", "male", "lions"
+      ],
+      "correct": "cat"
+    },
+    {
+      "all": [
+        "cat", "lions", "tigers"
+      ],
+      "correct": "tigers"
+    },
+    {
+      "all": [
+        "adult", "male", "juveniles"
+      ],
+      "correct": "adult"
+    },
+    {
+      "all": [
+        "male", "juveniles", "adult"
+      ],
+      "correct": "juveniles"
+    },
+    {
+      "all": [
+        "juveniles", "adult", "male"
+      ],
+      "correct": "male"
+    },
+    {
+      "all": [
+        "courage", "powerful", "impressive"
+      ],
+      "correct": "impressive"
     }
   ]
 }
+

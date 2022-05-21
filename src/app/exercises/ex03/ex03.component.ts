@@ -26,7 +26,7 @@ export class Ex03Component implements OnInit, OnDestroy {
     this.ex03Service.getWorkingTextFromApi()
       .pipe(first())
       .subscribe((txtObj: WorkingTextModel) => {
-        this.workingTxtArray = txtObj.working_text.split('{myVariable}');
+        this.workingTxtArray = txtObj.working_text.split('{var}');
         this.answers = txtObj.answers;
       });
   }

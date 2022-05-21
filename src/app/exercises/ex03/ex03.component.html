@@ -25,6 +25,8 @@
           *ngIf="i < answers.length"
         >
 
+          <option selected></option>
+
           <option *ngFor="let word of (answers | selectAnswers: i)">
             {{word}}
           </option>
