@@ -1,0 +1,33 @@
+@import "src/app/shared/style/variable";
+
+@media (min-width: 0) {
+  .wrapper {
+
+    &__main {
+      margin-bottom: 20px;
+
+      &__column {
+        background-color: $cool-pastel-green;
+        padding: 15px;
+        border-radius: 5px;
+        line-height: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        max-width: 600px;
+
+        &__sentence-container {
+          display: inline-block;
+
+          &__ch-word {
+            border: 0;
+            border-radius: 5px;
+            margin: 0 5px;
+            padding: 5px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

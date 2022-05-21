@@ -1,1 +1,45 @@
-<p>ex03 works!</p>
+<div class="wrapper">
+
+  <app-task-headline
+    [headline]="'Uzupełnij tekst'"
+    [isChecking]="isCheck"
+    [amount]="0"
+    [score]="result"
+  ></app-task-headline>
+
+  <div class="wrapper__main">
+
+    <div class="wrapper__main__column">
+
+      <div
+        class="wrapper__main__column__sentence-container"
+        *ngFor="let sentence of workingTxtArray; index as i"
+      >
+
+        <span class="wrapper__main__column__sentence-container__sentence">
+          {{sentence}}
+        </span>
+
+        <select
+          class="wrapper__main__column__sentence-container__ch-word"
+          *ngIf="i < answers.length"
+        >
+
+          <option *ngFor="let word of (answers | selectAnswers: i)">
+            {{word}}
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <app-summary
+    [isChecking]="isCheck"
+    (summaryEvents)="summaryEvents($event)"
+  ></app-summary>
+
+</div>

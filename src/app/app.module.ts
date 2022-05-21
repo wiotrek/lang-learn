@@ -13,6 +13,7 @@ import { IdStrListPipe } from './exercises/ex01/_pipes/id-str-list.pipe';
 import { Ex02Component } from './exercises/ex02/ex02.component';
 import { SharedModule } from "./shared/shared.module";
 import { Ex03Component } from './exercises/ex03/ex03.component';
+import { SelectAnswersPipe } from './exercises/ex03/_pipes/select-answers.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { Ex03Component } from './exercises/ex03/ex03.component';
     Ex00Component,
     IdStrListPipe,
     Ex02Component,
-    Ex03Component
+    Ex03Component,
+    SelectAnswersPipe
   ],
   imports: [
     AppRoutingModule,

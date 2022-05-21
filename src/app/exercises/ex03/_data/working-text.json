@@ -1,0 +1,17 @@
+{
+  "working_text": "some text bla bla {myVariable} blablal dupa dupa {myVariable} blabla",
+  "answers": [
+    {
+      "all": [
+        "dupa", "dupa2", "dupa3", "dupa4"
+      ],
+      "correct": "dupa4"
+    },
+    {
+      "all": [
+        "kupa", "kupa2", "kupa3", "kupa4"
+      ],
+      "correct": "kupa2"
+    }
+  ]
+}

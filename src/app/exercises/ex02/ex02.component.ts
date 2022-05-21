@@ -3,7 +3,7 @@ import { ShuffleWordsHelper } from "./_utils/shuffle-words.helper";
 import { SummaryBtnType } from "../../shared/components/summary/_types/summary-btn.type";
 import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 import { ShuffleList } from "../../shared/utils/shuffle-list.helper";
-import {ActivatedRoute, Router} from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-ex02',
