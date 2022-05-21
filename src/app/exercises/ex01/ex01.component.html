@@ -1,6 +1,11 @@
 <div class="wrapper">
 
-  <h2 class="wrapper__headline">Dopasuj nazwe zwierzątka</h2>
+  <app-task-headline
+    [headline]="'Dopasuj nazwy zwierząt'"
+    [isChecking]="isCheck"
+    [amount]="listOfAnimalObj.length"
+    [score]="result"
+  ></app-task-headline>
 
   <ul class="wrapper__column" cdkDropListGroup>
 
@@ -71,53 +76,9 @@
 
   </div>
 
-  <div class="wrapper__check-bar">
-
-    <div class="wrapper__check-bar__left">
-
-      <button
-        class="wrapper__check-bar__btn"
-        mat-raised-button
-        color="primary"
-        (click)="check()"
-      >
-        {{'exercises.ex01.buttons.check-btn' | translate}}
-      </button>
-
-      <button
-        class="wrapper__check-bar__btn"
-        mat-raised-button
-        color="warn"
-        (click)="reset()"
-      >
-        {{'exercises.ex01.buttons.reset-btn' | translate}}
-      </button>
-
-      <button
-        class="wrapper__check-bar__btn"
-        *ngIf="result === listOfAnimalObj.length"
-        mat-raised-button
-        color="accent"
-        routerLink="../ex-02"
-      >
-        {{'exercises.ex01.buttons.next-btn' | translate}}
-      </button>
-
-    </div>
-
-    <div class="wrapper__check-bar__right" *ngIf="isCheck">
-
-      <span *ngIf="result === listOfAnimalObj.length">
-        {{'exercises.ex01.summary.next-page' | translate}}
-      </span>
-
-      <span>
-        {{'exercises.ex01.summary.result' | translate}}
-        {{result + ' / ' + listOfAnimalObj?.length}}
-      </span>
-
-    </div>
-
-  </div>
+  <app-summary
+    [isChecking]="isCheck"
+    (summaryEvents)="summaryEvents($event)"
+  ></app-summary>
 
 </div>

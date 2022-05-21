@@ -40,7 +40,17 @@
             background-color: white;
             padding: 5px;
             border-radius: 5px;
+            cursor: pointer;
           }
+        }
+
+        &__mat-icon {
+          opacity: 0;
+          color: red;
+          font-size: 1rem;
+
+          &--show { opacity: 1; }
+          &--correct { color: $cool-green; }
         }
       }
     }

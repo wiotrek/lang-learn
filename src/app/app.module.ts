@@ -12,6 +12,7 @@ import { Ex00Component } from './exercises/ex00/ex00.component';
 import { IdStrListPipe } from './exercises/ex01/_pipes/id-str-list.pipe';
 import { Ex02Component } from './exercises/ex02/ex02.component';
 import { SharedModule } from "./shared/shared.module";
+import { Ex03Component } from './exercises/ex03/ex03.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SharedModule } from "./shared/shared.module";
     Ex01Component,
     Ex00Component,
     IdStrListPipe,
-    Ex02Component
+    Ex02Component,
+    Ex03Component
   ],
   imports: [
     AppRoutingModule,

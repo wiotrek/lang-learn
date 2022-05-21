@@ -2,8 +2,8 @@
 
   <app-task-headline
     [headline]="'Uporządkuj słowa'"
-    [isChecking]="isChecking"
-    [amount]="listOfShuffleWords.length"
+    [isChecking]="isCheck"
+    [amount]="workingWordsList.length"
     [score]="result"
   ></app-task-headline>
 
@@ -11,14 +11,16 @@
 
     <div
       class="wrapper__column__row"
-      *ngFor="let list of listOfShuffleWords"
-      cdkDropList
-      cdkDropListOrientation="horizontal"
-      (cdkDropListDropped)="drop($event, list.id)"
+      *ngFor="let list of workingWordsList"
     >
       <div class="wrapper__column__row__list-id">{{list.id}}.</div>
 
-      <div class="wrapper__column__row__word-container">
+      <div
+        class="wrapper__column__row__word-container"
+        cdkDropList
+        cdkDropListOrientation="horizontal"
+        (cdkDropListDropped)="drop($event, list.id)"
+      >
 
         <div
           class="wrapper__column__row__word-container__word"
@@ -30,12 +32,26 @@
 
       </div>
 
+      <mat-icon
+        class="wrapper__column__row__mat-icon"
+        [ngClass]="{
+          'wrapper__column__row__mat-icon--show': isCheck,
+          'wrapper__column__row__mat-icon--correct':
+            list.words.toString()
+              === correctListOfWords[list.id - 1].words.toString()
+        }"
+      >
+        {{list.words.toString()
+            === correctListOfWords[list.id - 1].words.toString()
+              ? 'done' : 'warning'}}
+      </mat-icon>
+
     </div>
 
   </div>
 
   <app-summary
-    [isChecking]="isChecking"
+    [isChecking]="isCheck"
     (summaryEvents)="summaryEvents($event)"
   ></app-summary>
 

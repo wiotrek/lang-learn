@@ -3,6 +3,8 @@ import { AnimalIconsArray } from "./_arrays/animal-icons.array";
 import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import { AnimalModel } from "./_models/animal.model";
 import { AnimalNameModel } from "./_models/animal-name.model";
+import {SummaryBtnType} from "../../shared/components/summary/_types/summary-btn.type";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-ex01',
@@ -24,7 +26,10 @@ export class Ex01Component {
   // on the summary show how many animals is correct
   result = 0;
 
-  constructor() {
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
 
     // assign mapping list only with id and display txt
     this.listOfNames = this.clearListOfAnimalNameList();
@@ -74,6 +79,22 @@ export class Ex01Component {
 
       // assign { id, displayTxt } to nesting element in main list
       this.listOfAnimalObj[this.listOfAnimalObj.indexOf(dropContainer)] = dropContainer;
+    }
+  }
+
+  summaryEvents(btn: SummaryBtnType): void {
+    switch (btn) {
+      case "check":
+        this.check();
+        break;
+      case "reset":
+        this.reset();
+        break;
+      case "next":
+        this.router.navigate(['ex-02'], {
+            relativeTo: this.activatedRoute.parent
+          }
+        ).then();
     }
   }
 

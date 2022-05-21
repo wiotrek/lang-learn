@@ -6,6 +6,7 @@
       class="wrapper__left-side__btn"
       mat-raised-button
       color="primary"
+      [disabled]="isChecking"
       (click)="buttonsEvent('check')"
     >
       {{'shared.components.summary.check-btn' | translate}}
