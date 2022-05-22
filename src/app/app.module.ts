@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './view/app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { ExercisesComponent } from './exercises/exercises.component';
-import { CoreModule } from "./core/core.module";
 import { Ex01Component } from './exercises/ex01/ex01.component';
 import { Ex00Component } from './exercises/ex00/ex00.component';
 import { IdStrListPipe } from './exercises/ex01/_pipes/id-str-list.pipe';
@@ -14,6 +11,7 @@ import { Ex02Component } from './exercises/ex02/ex02.component';
 import { SharedModule } from "./shared/shared.module";
 import { Ex03Component } from './exercises/ex03/ex03.component';
 import { SelectAnswersPipe } from './exercises/ex03/_pipes/select-answers.pipe';
+import { Ex04Component } from './exercises/ex04/ex04.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +23,8 @@ import { SelectAnswersPipe } from './exercises/ex03/_pipes/select-answers.pipe';
     IdStrListPipe,
     Ex02Component,
     Ex03Component,
-    SelectAnswersPipe
+    SelectAnswersPipe,
+    Ex04Component
   ],
   imports: [
     AppRoutingModule,

@@ -71,7 +71,7 @@ export class Ex03Component implements OnInit, OnDestroy {
         this.reset();
         break;
       case "next":
-        this.router.navigate(['ex-03'], {
+        this.router.navigate(['ex-04'], {
             relativeTo: this.activatedRoute.parent
           }
         ).then();
@@ -84,11 +84,11 @@ export class Ex03Component implements OnInit, OnDestroy {
 
   private check(): void {
 
-    // set state isCheck
-    this.isCheck = true;
-
     // if check is already then end of function
     if (this.isCheck) { return; }
+
+    // set state isCheck
+    this.isCheck = true;
 
     // check all correct response in workingAnswers list
     this.result = this.workingAnswers.reduce(
