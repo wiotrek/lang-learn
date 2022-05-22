@@ -20,6 +20,7 @@
         cdkDropList
         cdkDropListOrientation="horizontal"
         (cdkDropListDropped)="drop($event, list.id)"
+        [cdkDropListDisabled]="isCheck"
       >
 
         <div

@@ -13,7 +13,7 @@
 
       <div
         class="wrapper__main__column__sentence-container"
-        *ngFor="let sentence of workingTxtArray; index as i"
+        *ngFor="let sentence of mainTxtArray; index as i"
       >
 
         <span class="wrapper__main__column__sentence-container__sentence">
@@ -22,13 +22,15 @@
 
         <select
           class="wrapper__main__column__sentence-container__ch-word"
+          #selectRef
           *ngIf="i < answers.length"
           (change)="fillUserChoice($event, i)"
           [ngClass]="{
             'wrapper__main__column__sentence-container__ch-word--not-check': !isCheck,
             'wrapper__main__column__sentence-container__ch-word--correct':
-              userChoice[i].val === answers[i].correct
+              workingAnswers[i].val === answers[i].correct
           }"
+          [disabled]="isCheck"
         >
 
           <option selected></option>

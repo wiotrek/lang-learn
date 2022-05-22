@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChildren} from '@angular/core';
 import { Ex03Service } from "./_serivce/ex03.service";
 import { first, Subscription } from "rxjs";
 import { Answers, WorkingTextModel } from "./_models/working-text.model";
@@ -11,18 +11,17 @@ import { SummaryBtnType } from "../../shared/components/summary/_types/summary-b
 })
 export class Ex03Component implements OnInit, OnDestroy {
 
+  @ViewChildren('selectRef') selectRef!: QueryList<ElementRef>;
+
   // header options
   isCheck = false;
   result = 0;
   amount = 0;
 
-  workingTxtArray: string[] = [];
+  mainTxtArray: string[] = [];
   answers: Answers[] = [];
 
-  userChoice: {
-    id: number;
-    val: string;
-  }[] = [];
+  workingAnswers: { id: number; val: string; }[] = [];
 
   private subscription: Subscription | undefined;
 
@@ -32,15 +31,11 @@ export class Ex03Component implements OnInit, OnDestroy {
     this.ex03Service.getWorkingTextFromApi()
       .pipe(first())
       .subscribe((txtObj: WorkingTextModel) => {
-        this.workingTxtArray = txtObj.working_text.split('{var}');
+        this.mainTxtArray = txtObj.working_text.split('{var}');
         this.answers = txtObj.answers;
         this.amount = txtObj.answers.length;
 
-        let i = 0;
-        while (i < this.answers.length) {
-          this.userChoice.push({ id: i, val: '' });
-          i++;
-        }
+        this.clearWorkingAnswers(txtObj.answers.length);
       });
   }
 
@@ -59,7 +54,7 @@ export class Ex03Component implements OnInit, OnDestroy {
   }
 
   fillUserChoice(txt: any, id: number): void {
-    this.userChoice[id].val = txt.target.value;
+    this.workingAnswers[id].val = txt.target.value;
   }
 
   private check(): void {
@@ -69,7 +64,7 @@ export class Ex03Component implements OnInit, OnDestroy {
 
     this.isCheck = true;
 
-    this.result = this.userChoice.reduce(
+    this.result = this.workingAnswers.reduce(
       (acc: number, curr: { id: number, val: string }) => {
 
         return acc + (curr.val === this.answers[curr.id].correct ? 1 : 0)
@@ -77,8 +72,21 @@ export class Ex03Component implements OnInit, OnDestroy {
     );
   }
 
+  private clearWorkingAnswers(amountToClear: number): void {
+    let i = 0;
+
+    while (i < amountToClear) {
+      this.workingAnswers.push({ id: i, val: '' });
+      i++;
+    }
+  }
+
   private reset(): void {
+
+    this.selectRef.forEach(el => el.nativeElement.value = '');
+
     this.isCheck = false;
+    this.clearWorkingAnswers(this.answers.length);
   }
 
   ngOnDestroy() { this.subscription?.unsubscribe(); }
