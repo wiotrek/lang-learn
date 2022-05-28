@@ -1,1 +1,43 @@
-<p>ex04 works!</p>
+<div class="wrapper">
+
+  <app-task-headline
+    [headline]="'Ułóż cyfry w odpowiedniej kolejności'"
+    [isChecking]="isCheck"
+    [amount]="amount"
+    [score]="result"
+  ></app-task-headline>
+
+  <div
+    class="wrapper__column"
+    cdkDropList
+    (cdkDropListDropped)="drop($event)"
+  >
+
+    <div class="wrapper__column__icon wrapper__column__icon--swap">
+      <mat-icon inline="true">swap_vert</mat-icon>
+    </div>
+
+    <div class="wrapper__column__icon wrapper__column__icon--smile">
+      <mat-icon inline="true">sentiment_very_satisfied</mat-icon>
+    </div>
+
+    <div
+      class="wrapper__column__row"
+      *ngFor="let digit of workingDigitList; index as i"
+      cdkDrag
+      [ngClass]="{
+        'wrapper__column__row--correct': isCheck && (digit.seq === i + 1),
+        'wrapper__column__row--wrong': isCheck && (digit.seq !== i + 1)
+      }"
+    >
+      {{digit.name}}
+    </div>
+
+  </div>
+
+  <app-summary
+    [isChecking]="isCheck"
+    (summaryEvents)="summaryEvents($event)"
+  ></app-summary>
+
+</div>

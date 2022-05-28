@@ -1,0 +1,59 @@
+@import "src/app/shared/style/variable";
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+@media (min-width: 0) {
+  .wrapper__column {
+    margin: 20px 0;
+    background-color: $cool-pastel-green;
+    padding: 20px;
+
+    &__icon { display: none; }
+
+    &__row {
+      background-color: white;
+      cursor: grab;
+      margin: 3px auto;
+      text-align: center;
+      padding: 1px 5px;
+      border-radius: 5px;
+
+      &--correct { color: $cool-green; }
+      &--wrong { color: red; }
+    }
+  }
+}
+
+@media (min-width: $min-desktop) {
+  .wrapper__column {
+    margin: 20px 15px;
+    max-width: 600px;
+    position: relative;
+
+    &__icon {
+      display: initial;
+      position: absolute;
+      color: white;
+      font-size: 5rem;
+      top: 40%;
+
+      &--swap {
+        left: 10%;
+        color: #797A9E;
+      }
+
+      &--smile {
+        right: 10%;
+        color: $cool-green;
+      }
+    }
+
+    &__row { width: 200px; }
+  }
+}

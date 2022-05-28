@@ -12,6 +12,7 @@ import { SharedModule } from "./shared/shared.module";
 import { Ex03Component } from './exercises/ex03/ex03.component';
 import { SelectAnswersPipe } from './exercises/ex03/_pipes/select-answers.pipe';
 import { Ex04Component } from './exercises/ex04/ex04.component';
+import { Ex05Component } from './exercises/ex05/ex05.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { Ex04Component } from './exercises/ex04/ex04.component';
     Ex02Component,
     Ex03Component,
     SelectAnswersPipe,
-    Ex04Component
+    Ex04Component,
+    Ex05Component
   ],
   imports: [
     AppRoutingModule,
