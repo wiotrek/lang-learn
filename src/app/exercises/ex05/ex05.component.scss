@@ -1,0 +1,61 @@
+@import "src/app/shared/style/variable";
+
+@media (min-width: 0) {
+  .wrapper {
+
+    &__main {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: $cool-pastel-green;
+      max-width: 580px;
+      border-radius: 5px;
+
+      &__element {
+        margin: 5px 0;
+        flex: 1 1 auto;
+
+        &__inner {
+          display: flex;
+          gap: 10px;
+          background-color: white;
+          padding: 5px;
+          border-radius: 5px;
+
+          &__color {
+            border-radius: 5px;
+            width: 30px;
+            height: 30px;
+          }
+
+          &__txt {
+            border: 0;
+            border-bottom: 1px solid grey;
+            padding: 0 5px;
+            width: 150px;
+          }
+
+          &__icon {
+            margin-left: 5px;
+            font-size: 1rem;
+            align-self: center;
+            opacity: 0;
+            color: red;
+
+            &--show { opacity: 1; }
+            &--correct { color: $cool-green; }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $min-desktop) {
+  .wrapper__main__element__inner__txt {
+    width: auto;
+  }
+}

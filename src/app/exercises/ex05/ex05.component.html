@@ -1,1 +1,53 @@
-<p>ex05 works!</p>
+<div class="wrapper">
+
+  <app-task-headline
+    [headline]="'Podaj odpowiednią nazwe koloru'"
+    [isChecking]="isCheck"
+    [amount]="amount"
+    [score]="result"
+  ></app-task-headline>
+
+  <div class="wrapper__main">
+
+    <div
+      class="wrapper__main__element"
+      *ngFor="let color of list"
+    >
+
+      <div class="wrapper__main__element__inner">
+
+        <div
+          class="wrapper__main__element__inner__color"
+          [ngStyle]="{ 'background-color': color.hex }"
+        ></div>
+
+        <input
+          type="text"
+          class="wrapper__main__element__inner__txt"
+          placeholder="color"
+        >
+
+        <div
+          class="wrapper__main__element__inner__icon"
+          [ngClass]="{
+          'wrapper__main__element__inner__icon--show': true,
+          'wrapper__main__element__inner__icon--correct': true
+        }"
+        >
+          <mat-icon inline="true">
+            {{true ? 'done' : 'warning'}}
+          </mat-icon>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <app-summary
+    [isChecking]="isCheck"
+    (summaryEvents)="summaryEvents($event)"
+  ></app-summary>
+
+</div>
