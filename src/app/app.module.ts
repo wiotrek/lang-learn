@@ -13,6 +13,7 @@ import { Ex03Component } from './exercises/ex03/ex03.component';
 import { SelectAnswersPipe } from './exercises/ex03/_pipes/select-answers.pipe';
 import { Ex04Component } from './exercises/ex04/ex04.component';
 import { Ex05Component } from './exercises/ex05/ex05.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { Ex05Component } from './exercises/ex05/ex05.component';
   ],
   imports: [
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })
