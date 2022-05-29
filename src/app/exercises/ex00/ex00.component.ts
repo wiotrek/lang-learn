@@ -1,17 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-ex00',
-  templateUrl: './ex00.component.html',
-  styleUrls: ['./ex00.component.scss']
+  template: `
+    <div class="wrapper">
+
+      <h2>Do zrobienia masz {{amount}} zadań</h2>
+
+      <button
+        mat-raised-button
+        class="wrapper__start-btn"
+        color="primary"
+        routerLink="ex-01"
+      >
+        Rozpocznij
+      </button>
+
+    </div>
+  `,
+  styles: [`
+    .wrapper {
+      text-align: center;
+    }
+  `]
 })
-export class Ex00Component implements OnInit {
-
-  amount = 7;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class Ex00Component {
+  amount = 5;
 }

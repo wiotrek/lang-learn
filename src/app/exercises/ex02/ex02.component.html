@@ -3,7 +3,7 @@
   <app-task-headline
     [headline]="'Uporządkuj słowa'"
     [isChecking]="isCheck"
-    [amount]="workingWordsList.length"
+    [amount]="workingList.length"
     [score]="result"
   ></app-task-headline>
 
@@ -11,7 +11,7 @@
 
     <div
       class="wrapper__column__row"
-      *ngFor="let list of workingWordsList"
+      *ngFor="let list of workingList"
     >
       <div class="wrapper__column__row__list-id">{{list.id}}.</div>
 

@@ -3,18 +3,15 @@ import { AnimalIconsArray } from "./_arrays/animal-icons.array";
 import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import { AnimalModel } from "./_models/animal.model";
 import { AnimalNameModel } from "./_models/animal-name.model";
-import {SummaryBtnType} from "../../shared/components/summary/_types/summary-btn.type";
-import {ActivatedRoute, Router} from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ExerciseAbstract } from 'src/app/shared/abstarcts/exercise.abstract';
 
 @Component({
   selector: 'app-ex01',
   templateUrl: './ex01.component.html',
   styleUrls: ['./ex01.component.scss']
 })
-export class Ex01Component {
-
-  // show which names are correct compare
-  isCheck = false;
+export class Ex01Component extends ExerciseAbstract {
 
   // list of animal object with nested object
   listOfAnimalObj: AnimalModel[];
@@ -23,13 +20,12 @@ export class Ex01Component {
   // to compare drag with place
   listOfNames: AnimalNameModel[];
 
-  // on the summary show how many animals is correct
-  result = 0;
-
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
+
+    super(false, 0, 0);
 
     // assign mapping list only with id and display txt
     this.listOfNames = this.clearListOfAnimalNameList();
@@ -40,8 +36,11 @@ export class Ex01Component {
 
   check(): void {
 
-    // show which elements are correct compare
-    this.isCheck = !this.isCheck;
+    // if check is already then end of function
+    if (this.isCheck) { return; }
+
+    // set state isCheck
+    this.isCheck = true;
 
     this.result = this.listOfAnimalObj.reduce(
       (acc: number, curr: AnimalModel) =>
@@ -82,28 +81,11 @@ export class Ex01Component {
     }
   }
 
-  summaryEvents(btn: SummaryBtnType): void {
-    switch (btn) {
-      case "check":
-        this.check();
-        break;
-      case "reset":
-        this.reset();
-        break;
-      case "next":
-        this.router.navigate(['ex-02'], {
-            relativeTo: this.activatedRoute.parent
-          }
-        ).then();
-    }
-  }
-
   // clear both list to start position and summary
   reset(): void {
 
     // recover started list
     this.listOfNames = this.clearListOfAnimalNameList();
-
 
     // clear list to start position
     this.listOfAnimalObj.map(animal => {
@@ -117,8 +99,15 @@ export class Ex01Component {
       return animal;
     });
 
-    this.result = 0;
+    // set off isCheck
     this.isCheck = false;
+  }
+
+  next(): void {
+    this.router.navigate(['ex-02'], {
+        relativeTo: this.activatedRoute.parent
+      }
+    ).then();
   }
 
   // mapping main animal list to get only id and display txt

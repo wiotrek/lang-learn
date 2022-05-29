@@ -8,23 +8,19 @@ import {
 import { Ex03Service } from "./_serivce/ex03.service";
 import { first, Subscription } from "rxjs";
 import { Answers, WorkingTextModel } from "./_models/working-text.model";
-import { SummaryBtnType } from "../../shared/components/summary/_types/summary-btn.type";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ExerciseAbstract } from 'src/app/shared/abstarcts/exercise.abstract';
 
 @Component({
   selector: 'app-ex03',
   templateUrl: './ex03.component.html',
   styleUrls: ['./ex03.component.scss']
 })
-export class Ex03Component implements OnInit, OnDestroy {
+export class Ex03Component extends ExerciseAbstract
+  implements OnInit, OnDestroy {
 
   // get all <select> selector from template
   @ViewChildren('selectRef') selectRef!: QueryList<ElementRef>;
-
-  // header options
-  isCheck = false;
-  result = 0;
-  amount = 0;
 
   // main array include text with {var} - keys
   mainTxtArray: string[] = [];
@@ -41,7 +37,9 @@ export class Ex03Component implements OnInit, OnDestroy {
     private ex03Service: Ex03Service,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+    super(false, 0, 0);
+  }
 
   ngOnInit() {
     this.subscription = this.ex03Service.getWorkingTextFromApi()
@@ -61,28 +59,7 @@ export class Ex03Component implements OnInit, OnDestroy {
     this.workingAnswers[id].val = txt.target.value;
   }
 
-  // catch events from bottom summary section
-  summaryEvents(btn: SummaryBtnType): void {
-    switch (btn) {
-      case "check":
-        this.check();
-        break;
-      case "reset":
-        this.reset();
-        break;
-      case "next":
-        this.router.navigate(['ex-04'], {
-            relativeTo: this.activatedRoute.parent
-          }
-        ).then();
-        break;
-
-      default:
-        break;
-    }
-  }
-
-  private check(): void {
+  check(): void {
 
     // if check is already then end of function
     if (this.isCheck) { return; }
@@ -97,17 +74,14 @@ export class Ex03Component implements OnInit, OnDestroy {
     );
   }
 
-  // assign empty value to working list
-  private clearWorkingAnswers(amountToClear: number): void {
-    let i = 0;
-
-    while (i < amountToClear) {
-      this.workingAnswers.push({ id: i, val: '' });
-      i++;
-    }
+  next(): void {
+    this.router.navigate(['ex-04'], {
+        relativeTo: this.activatedRoute.parent
+      }
+    ).then();
   }
 
-  private reset(): void {
+  reset(): void {
 
     // set state isCheck
     this.isCheck = false;
@@ -120,4 +94,14 @@ export class Ex03Component implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() { this.subscription?.unsubscribe(); }
+
+  // assign empty value to working list
+  private clearWorkingAnswers(amountToClear: number): void {
+    let i = 0;
+
+    while (i < amountToClear) {
+      this.workingAnswers.push({ id: i, val: '' });
+      i++;
+    }
+  }
 }

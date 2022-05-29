@@ -23,11 +23,11 @@
 
     <div
       class="wrapper__column__row"
-      *ngFor="let digit of workingDigitList; index as i"
+      *ngFor="let digit of workingList; index as i"
       cdkDrag
       [ngClass]="{
-        'wrapper__column__row--correct': isCheck && (digit.seq === i + 1),
-        'wrapper__column__row--wrong': isCheck && (digit.seq !== i + 1)
+        'wrapper__column__row--correct': isCheck && (digit.id === i + 1),
+        'wrapper__column__row--wrong': isCheck && (digit.id !== i + 1)
       }"
     >
       {{digit.name}}

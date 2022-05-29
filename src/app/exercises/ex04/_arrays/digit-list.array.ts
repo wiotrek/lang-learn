@@ -1,45 +1,54 @@
-export const DigitListArray: {
-  seq: number;
-  name: string;
-}[] = [
+import { WorkingElementModel } from 'src/app/shared/models/working-element.model';
+
+export const DigitListArray: WorkingElementModel[] = [
   {
-    seq: 1,
-    name: 'first'
+    id: 1,
+    name: 'first',
+    displayName: ''
   },
   {
-    seq: 2,
-    name: 'second'
+    id: 2,
+    name: 'second',
+    displayName: ''
   },
   {
-    seq: 3,
-    name: 'third'
+    id: 3,
+    name: 'third',
+    displayName: ''
   },
   {
-    seq: 4,
-    name: 'fourth'
+    id: 4,
+    name: 'fourth',
+    displayName: ''
   },
   {
-    seq: 5,
-    name: 'fifth'
+    id: 5,
+    name: 'fifth',
+    displayName: ''
   },
   {
-    seq: 6,
-    name: 'sixth'
+    id: 6,
+    name: 'sixth',
+    displayName: ''
   },
   {
-    seq: 7,
-    name: 'seventh'
+    id: 7,
+    name: 'seventh',
+    displayName: ''
   },
   {
-    seq: 8,
-    name: 'eighth'
+    id: 8,
+    name: 'eighth',
+    displayName: ''
   },
   {
-    seq: 9,
-    name: 'ninth'
+    id: 9,
+    name: 'ninth',
+    displayName: ''
   },
   {
-    seq: 10,
-    name: 'tenth'
+    id: 10,
+    name: 'tenth',
+    displayName: ''
   }
 ];

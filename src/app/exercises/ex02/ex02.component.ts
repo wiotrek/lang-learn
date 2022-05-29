@@ -1,77 +1,84 @@
 import { Component, OnInit } from '@angular/core';
 import { ShuffleWordsHelper } from "./_utils/shuffle-words.helper";
-import { SummaryBtnType } from "../../shared/components/summary/_types/summary-btn.type";
 import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 import { ShuffleList } from "../../shared/utils/shuffle-list.helper";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ExerciseAbstract } from 'src/app/shared/abstarcts/exercise.abstract';
+import { WordModel } from 'src/app/exercises/ex02/_models/word.model';
+import { IExerciseModel } from 'src/app/shared/interfaces/i-exercise.model';
 
 @Component({
   selector: 'app-ex02',
   templateUrl: './ex02.component.html',
   styleUrls: ['./ex02.component.scss']
 })
-export class Ex02Component implements OnInit {
+export class Ex02Component extends ExerciseAbstract
+  implements IExerciseModel<WordModel>, OnInit {
 
-  isCheck = false;
+  // main list to working
+  workingList: WordModel[] = [];
 
-  result = 0;
-
-  workingWordsList: { id: number, words: string[] }[] = [];
-
-  correctListOfWords: { id: number, words: string[] }[] = ShuffleWordsHelper();
+  // list only for checking workingList
+  correctListOfWords: WordModel[] = ShuffleWordsHelper();
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) {}
-
-  ngOnInit() { this.resetListOfWords(); }
-
-  summaryEvents(btn: SummaryBtnType): void {
-    switch (btn) {
-      case "check":
-        this.checkResult();
-        break;
-      case "reset":
-        this.isCheck = false;
-        this.resetListOfWords();
-        break;
-      case "next":
-        this.router.navigate(['ex-03'], {
-            relativeTo: this.activatedRoute.parent
-          }
-        ).then();
-    }
+  ) {
+    super(false, 0, 0);
   }
+
+  ngOnInit() { this.shuffleWordList(); }
 
   drop(event: CdkDragDrop<string[]>, id: number): void {
     moveItemInArray(
-      this.workingWordsList[
-        this.workingWordsList.findIndex(x => x.id === id)
+      this.workingList[
+        this.workingList.findIndex(x => x.id === id)
       ].words,
       event.previousIndex,
       event.currentIndex
     );
   }
 
-  private checkResult(): void {
+  check(): void {
 
     // if check is already then end of function
     if (this.isCheck) { return; }
 
+    // set state isCheck
     this.isCheck = true;
 
     // count good results
-    this.result = this.workingWordsList.reduce(
-      (acc: number, curr: { id: number, words: string[] }) =>
+    this.result = this.workingList.reduce(
+      (acc: number, curr: WordModel) =>
         acc + (this.correctListOfWords[
           curr.id - 1
         ].words.toString() === curr.words.toString() ? 1 : 0), 0
     );
   }
 
-  private resetListOfWords(): void {
-    this.workingWordsList = ShuffleWordsHelper().map(list => {
+  next(): void {
+    this.router.navigate(['ex-03'], {
+        relativeTo: this.activatedRoute.parent
+      }
+    ).then();
+  }
+
+  reset(): void {
+
+    // shuffle list again
+    this.workingList = ShuffleWordsHelper().map(list => {
+      list.words = ShuffleList(list.words);
+      return list;
+    });
+
+    // set off isCheck
+    this.isCheck = false;
+  }
+
+  // shuffle list again
+  private shuffleWordList(): void {
+    this.workingList = ShuffleWordsHelper().map(list => {
       list.words = ShuffleList(list.words);
       return list;
     });
