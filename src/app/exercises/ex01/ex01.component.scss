@@ -1,7 +1,7 @@
 @import "src/app/shared/style/variable";
 
 @media (min-width: 0) {
-  .wrapper {
+  .main {
 
     &__column {
       display: flex;
@@ -72,9 +72,5 @@
 }
 
 @media (min-width: 700px) {
-  .wrapper {
-    &__column {
-      height: 200px;
-    }
-  }
+  .main__column { height: 200px; }
 }

@@ -7,7 +7,7 @@
       mat-raised-button
       color="primary"
       [disabled]="isChecking"
-      (click)="buttonsEvent('check')"
+      (click)="summaryEvents.emit('check')"
     >
       {{'shared.components.summary.check-btn' | translate}}
     </button>
@@ -16,7 +16,7 @@
       class="wrapper__check-bar__btn"
       mat-raised-button
       color="warn"
-      (click)="buttonsEvent('reset')"
+      (click)="summaryEvents.emit('reset')"
     >
       {{'shared.components.summary.reset-btn' | translate}}
     </button>
@@ -28,7 +28,7 @@
       class="summary__right-side__btn"
       mat-stroked-button
       color="accent"
-      (click)="buttonsEvent('next')"
+      (click)="summaryEvents.emit('next')"
     >
       {{'shared.components.summary.next-btn' | translate}}
     </button>

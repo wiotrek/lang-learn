@@ -1,22 +1,19 @@
-<div class="wrapper">
+<app-universal-exercise
+  [headline]="'Uporządkuj słowa'"
+  [isChecking]="isCheck"
+  [amount]="amount"
+  [score]="result"
+  (summaryEvents)="summaryEvents($event)"
+>
 
-  <app-task-headline
-    [headline]="'Uporządkuj słowa'"
-    [isChecking]="isCheck"
-    [amount]="workingList.length"
-    [score]="result"
-  ></app-task-headline>
+  <div class="main">
 
-  <div class="wrapper__column">
+    <div class="main__row" *ngFor="let list of workingList">
 
-    <div
-      class="wrapper__column__row"
-      *ngFor="let list of workingList"
-    >
-      <div class="wrapper__column__row__list-id">{{list.id}}.</div>
+      <div class="main__row__list-id">{{list.id}}.</div>
 
       <div
-        class="wrapper__column__row__word-container"
+        class="main__row__word-container"
         cdkDropList
         cdkDropListOrientation="horizontal"
         (cdkDropListDropped)="drop($event, list.id)"
@@ -24,7 +21,7 @@
       >
 
         <div
-          class="wrapper__column__row__word-container__word"
+          class="main__row__word-container__word"
           *ngFor="let word of list.words"
           cdkDrag
         >
@@ -34,26 +31,23 @@
       </div>
 
       <mat-icon
-        class="wrapper__column__row__mat-icon"
+        class="main__row__mat-icon"
         [ngClass]="{
-          'wrapper__column__row__mat-icon--show': isCheck,
-          'wrapper__column__row__mat-icon--correct':
+          'main__row__mat-icon--show': isCheck,
+          'main__row__mat-icon--correct':
             list.words.toString()
               === correctListOfWords[list.id - 1].words.toString()
         }"
       >
-        {{list.words.toString()
+        {{
+          list.words.toString()
             === correctListOfWords[list.id - 1].words.toString()
-              ? 'done' : 'warning'}}
+          ? 'done' : 'warning'
+        }}
       </mat-icon>
 
     </div>
 
   </div>
 
-  <app-summary
-    [isChecking]="isCheck"
-    (summaryEvents)="summaryEvents($event)"
-  ></app-summary>
-
-</div>
+</app-universal-exercise>

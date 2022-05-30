@@ -1,84 +1,80 @@
-<div class="wrapper">
+<app-universal-exercise
+  [headline]="'Dopasuj nazwe do zwierzątka'"
+  [isChecking]="isCheck"
+  [amount]="amount"
+  [score]="result"
+  (summaryEvents)="summaryEvents($event)"
+>
 
-  <app-task-headline
-    [headline]="'Dopasuj nazwy zwierząt'"
-    [isChecking]="isCheck"
-    [amount]="listOfAnimalObj.length"
-    [score]="result"
-  ></app-task-headline>
+  <div class="main">
 
-  <ul class="wrapper__column" cdkDropListGroup>
+    <ul class="main__column" cdkDropListGroup>
 
-    <li
-      class="wrapper__column__element"
-      *ngFor="let el of listOfAnimalObj; index as i"
-      cdkDropList
-      [id]="el.id.toString()"
-      cdkDropListConnectedTo="animal-name-list"
-      (cdkDropListDropped)="drop($event)"
-    >
-
-      <div class="wrapper__column__element__seq">{{i + 1}}.</div>
-
-      <fa-icon
-        [icon]="el.icon"
-        [ngStyle]="{'color': el.color}"
-      ></fa-icon>
-
-      <input
-        class="wrapper__column__element__text"
-        readonly
-        [value]="el.dropAnimal.txt | translate"
-        [ngClass]="{
-          'wrapper__column__element__text--insert': el.dropAnimal.id > 0
-        }"
+      <li
+        class="main__column__element"
+        *ngFor="let el of listOfAnimalObj; index as i"
+        cdkDropList
+        [id]="el.id.toString()"
+        cdkDropListConnectedTo="animal-name-list"
+        (cdkDropListDropped)="drop($event)"
       >
 
-      <mat-icon
-        class="wrapper__column__element__mat-icon"
-        [ngClass]="{
-          'wrapper__column__element__mat-icon--show': isCheck,
-          'wrapper__column__element__mat-icon--correct': el.dropAnimal.id == el.id
-        }"
-      >{{el.dropAnimal.id == el.id ? 'done' : 'warning'}}</mat-icon>
+        <fa-icon
+          [icon]="el.icon"
+          [ngStyle]="{'color': el.color}"
+        ></fa-icon>
 
-    </li>
+        <input
+          class="main__column__element__text"
+          readonly
+          [value]="el.dropAnimal.txt | translate"
+          [ngClass]="{
+            'main__column__element__text--insert': el.dropAnimal.id > 0
+          }"
+        >
 
-  </ul>
+        <mat-icon
+          class="main__column__element__mat-icon"
+          [ngClass]="{
+            'main__column__element__mat-icon--show': isCheck,
+            'main__column__element__mat-icon--correct': el.dropAnimal.id == el.id
+          }"
+        >{{el.dropAnimal.id == el.id ? 'done' : 'warning'}}</mat-icon>
 
-  <div
-    class="wrapper__container-names"
-    cdkDropList
-    cdkDropListSortingDisabled
-    id="animal-name-list"
-    [cdkDropListConnectedTo]="listOfAnimalObj | idStrList"
-  >
+      </li>
+
+    </ul>
 
     <div
-      class="wrapper__container-names__item"
-      *ngFor="let animal of listOfNames"
-      [id]="animal.id"
-      cdkDrag
+      class="main__container-names"
+      cdkDropList
+      cdkDropListSortingDisabled
+      id="animal-name-list"
+      [cdkDropListConnectedTo]="listOfAnimalObj | idStrList"
     >
 
-      <ng-template *cdkDragPlaceholder></ng-template>
-
       <div
-        class="wrapper__container-names__item
-          wrapper__container-names__item--cdk-preview"
-        *cdkDragPreview
+        class="main__container-names__item"
+        *ngFor="let animal of listOfNames"
+        [id]="animal.id"
+        cdkDrag
       >
+
+        <ng-template *cdkDragPlaceholder></ng-template>
+
+        <div
+          *cdkDragPreview
+          class="main__container-names__item
+            main__container-names__item--cdk-preview"
+        >
+          {{animal.txt | translate}}
+        </div>
+
         {{animal.txt | translate}}
       </div>
 
-      {{animal.txt | translate}}
     </div>
 
   </div>
 
-  <app-summary
-    [isChecking]="isCheck"
-    (summaryEvents)="summaryEvents($event)"
-  ></app-summary>
-
-</div>
+</app-universal-exercise>

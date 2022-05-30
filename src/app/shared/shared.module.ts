@@ -11,11 +11,13 @@ import { CoreModule} from "../core/core.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { TaskHeadlineComponent } from './components/task-headline/task-headline.component';
+import { UniversalExerciseComponent } from './components/universal-exercise/universal-exercise.component';
 
 @NgModule({
   declarations: [
     SummaryComponent,
-    TaskHeadlineComponent
+    TaskHeadlineComponent,
+    UniversalExerciseComponent
   ],
   imports: [
     // angular core
@@ -57,7 +59,8 @@ import { TaskHeadlineComponent } from './components/task-headline/task-headline.
 
     // another plugins
     FontAwesomeModule,
-    TaskHeadlineComponent
+    TaskHeadlineComponent,
+    UniversalExerciseComponent
   ]
 })
 export class SharedModule {}

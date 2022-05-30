@@ -9,7 +9,7 @@
 }
 
 @media (min-width: 0) {
-  .wrapper__column {
+  .main {
     margin: 20px 0;
     background-color: $cool-pastel-green;
     padding: 20px;
@@ -31,7 +31,7 @@
 }
 
 @media (min-width: $min-desktop) {
-  .wrapper__column {
+  .main {
     margin: 20px 15px;
     max-width: 600px;
     position: relative;

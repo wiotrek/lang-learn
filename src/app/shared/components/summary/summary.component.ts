@@ -11,9 +11,6 @@ export class SummaryComponent {
   // hidden next page btn if isChecking
   @Input() isChecking = false;
 
+  // when emit some button - check, reset or next
   @Output() summaryEvents = new EventEmitter<SummaryBtnType>();
-
-  buttonsEvent(event: SummaryBtnType): void {
-    this.summaryEvents.emit(event);
-  }
 }

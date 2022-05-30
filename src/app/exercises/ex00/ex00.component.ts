@@ -3,13 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-ex00',
   template: `
-    <div class="wrapper">
+    <div class="main">
 
       <h2>Do zrobienia masz {{amount}} zadań</h2>
 
       <button
         mat-raised-button
-        class="wrapper__start-btn"
+        class="main__start-btn"
         color="primary"
         routerLink="ex-01"
       >
@@ -19,9 +19,7 @@ import { Component } from '@angular/core';
     </div>
   `,
   styles: [`
-    .wrapper {
-      text-align: center;
-    }
+    .main { text-align: center; }
   `]
 })
 export class Ex00Component {

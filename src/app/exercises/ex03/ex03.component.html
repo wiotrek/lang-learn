@@ -1,63 +1,53 @@
-<div class="wrapper">
+<app-universal-exercise
+  [headline]="'Uzupełnij tekst'"
+  [isChecking]="isCheck"
+  [amount]="amount"
+  [score]="result"
+  (summaryEvents)="summaryEvents($event)"
+>
 
-  <app-task-headline
-    [headline]="'Uzupełnij tekst'"
-    [isChecking]="isCheck"
-    [amount]="amount"
-    [score]="result"
-  ></app-task-headline>
+  <div class="main">
 
-  <div class="wrapper__main">
+    <div
+      class="main__sentence-container"
+      *ngFor="let sentence of mainTxtArray; index as i"
+    >
 
-    <div class="wrapper__main__column">
+      <span class="main__sentence-container__sentence">
+        {{sentence}}
+      </span>
 
-      <div
-        class="wrapper__main__column__sentence-container"
-        *ngFor="let sentence of mainTxtArray; index as i"
-      >
-
-        <span class="wrapper__main__column__sentence-container__sentence">
-          {{sentence}}
-        </span>
-
-        <select
-          class="wrapper__main__column__sentence-container__ch-word"
-          #selectRef
-          *ngIf="i < answers.length"
-          (change)="fillUserChoice($event, i)"
-          [ngClass]="{
-            'wrapper__main__column__sentence-container__ch-word--not-check': !isCheck,
-            'wrapper__main__column__sentence-container__ch-word--correct':
+      <select
+        class="main__sentence-container__ch-word"
+        #selectRef
+        *ngIf="i < answers.length"
+        (change)="fillUserChoice($event, i)"
+        [ngClass]="{
+            'main__sentence-container__ch-word--not-check': !isCheck,
+            'main__sentence-container__ch-word--correct':
               workingAnswers[i].val === answers[i].correct
           }"
-          [disabled]="isCheck"
+        [disabled]="isCheck"
+      >
+
+        <option selected></option>
+        <option
+          *ngFor="let word of (answers | selectAnswers: i)"
+          [value]="word"
         >
+          {{word}}
+        </option>
 
-          <option selected></option>
-          <option
-            *ngFor="let word of (answers | selectAnswers: i)"
-            [value]="word"
-          >
-            {{word}}
-          </option>
+      </select>
 
-        </select>
+    </div>
 
-      </div>
-
-      <div class="wrapper__main__column__copyright">
-        source: African lion,
-        facts and photos,
-        https://www.nationalgeographic.com/animals/mammals/facts/african-lion
-      </div>
-
+    <div class="main__copyright">
+      source: African lion,
+      facts and photos,
+      https://www.nationalgeographic.com/animals/mammals/facts/african-lion
     </div>
 
   </div>
 
-  <app-summary
-    [isChecking]="isCheck"
-    (summaryEvents)="summaryEvents($event)"
-  ></app-summary>
-
-</div>
+</app-universal-exercise>

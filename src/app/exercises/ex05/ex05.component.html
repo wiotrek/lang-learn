@@ -1,44 +1,44 @@
-<div class="wrapper">
+<app-universal-exercise
+  [headline]="'Podaj odpowiednią nazwe koloru'"
+  [isChecking]="isCheck"
+  [amount]="amount"
+  [score]="result"
+  (summaryEvents)="summaryEvents($event)"
+>
+  <div class="main">
 
-  <app-task-headline
-    [headline]="'Podaj odpowiednią nazwe koloru'"
-    [isChecking]="isCheck"
-    [amount]="amount"
-    [score]="result"
-  ></app-task-headline>
+    <div class="main__element" *ngFor="let color of workingList">
 
-  <div class="wrapper__main">
-
-    <div class="wrapper__main__element" *ngFor="let color of workingList">
-
-      <div class="wrapper__main__element__inner">
+      <div class="main__element__inner">
 
         <div
-          class="wrapper__main__element__inner__color"
+          class="main__element__inner__color"
           [ngStyle]="{ 'background-color': color.hex }"
         ></div>
 
         <input
           [(ngModel)]="color.value"
           type="text"
-          class="wrapper__main__element__inner__txt"
+          class="main__element__inner__txt"
           placeholder="color"
         >
 
         <div
-          class="wrapper__main__element__inner__icon"
+          class="main__element__inner__icon"
           [ngClass]="{
-          'wrapper__main__element__inner__icon--show': isCheck,
-          'wrapper__main__element__inner__icon--correct':
+          'main__element__inner__icon--show': isCheck,
+          'main__element__inner__icon--correct':
             color.name.toLocaleLowerCase() === color.value.toLocaleLowerCase()
-        }"
+          }"
         >
+
           <mat-icon inline="true">
             {{
-              color.name.toLocaleLowerCase() === color.value.toLocaleLowerCase()
-                ? 'done' : 'warning'
+            color.name.toLocaleLowerCase() === color.value.toLocaleLowerCase()
+              ? 'done' : 'warning'
             }}
           </mat-icon>
+
         </div>
 
       </div>
@@ -46,10 +46,4 @@
     </div>
 
   </div>
-
-  <app-summary
-    [isChecking]="isCheck"
-    (summaryEvents)="summaryEvents($event)"
-  ></app-summary>
-
-</div>
+</app-universal-exercise>

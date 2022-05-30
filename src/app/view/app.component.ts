@@ -3,8 +3,15 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styles: [`
+    .wrapper__mid {
+      box-sizing: border-box;
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px 50px;
+    }
+  `]
 })
 export class AppComponent {
-  title = 'lang-learn';
+  title = 'Lang Learn App';
 }

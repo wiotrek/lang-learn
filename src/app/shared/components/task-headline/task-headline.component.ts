@@ -12,7 +12,6 @@ import { Component, Input } from '@angular/core';
   `,
   styles: [`
     .headline {
-      margin-bottom: 10px;
       display: flex;
       justify-content: space-between;
       align-items: baseline;
@@ -20,6 +19,7 @@ import { Component, Input } from '@angular/core';
 
     .headline__left {
       font-size: 1.2rem;
+      margin: 0;
     }
 
     .headline__right {
@@ -32,8 +32,16 @@ import { Component, Input } from '@angular/core';
   `]
 })
 export class TaskHeadlineComponent {
+
+  // topic of exercise
   @Input() headline = '';
+
+  // when is checking show exercise result
   @Input() score = 0;
+
+  // length of tasks
   @Input() amount = 0;
+
+  // hidden next page btn if isChecking
   @Input() isChecking = false;
 }

@@ -25,7 +25,7 @@ export class Ex01Component extends ExerciseAbstract {
     private activatedRoute: ActivatedRoute
   ) {
 
-    super(false, 0, 0);
+    super(false, 0, AnimalIconsArray.length);
 
     // assign mapping list only with id and display txt
     this.listOfNames = this.clearListOfAnimalNameList();

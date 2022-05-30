@@ -1,64 +1,59 @@
 @import "src/app/shared/style/variable";
 
 @media (min-width: 0) {
-  .wrapper {
+  .main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
 
-    &__column {
+    &__row {
       display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
+      flex-direction: row;
       gap: 10px;
-      margin-bottom: 30px;
+      align-items: center;
 
-      &__row {
+      &__list-id {
         display: flex;
-        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(167, 211, 166, .7);
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+      }
+
+      &__word-container {
+        display: flex;
         gap: 10px;
+        background-color: rgba(167, 211, 166, .7);
+        padding: 10px 15px;
+        border-radius: 5px;
+        max-width: 300px;
         align-items: center;
 
-        &__list-id {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: rgba(167, 211, 166, .7);
-          width: 50px;
-          height: 50px;
+
+        &__word {
+          background-color: white;
+          padding: 5px;
           border-radius: 5px;
+          cursor: pointer;
         }
+      }
 
-        &__word-container {
-          display: flex;
-          gap: 10px;
-          background-color: rgba(167, 211, 166, .7);
-          padding: 10px 15px;
-          border-radius: 5px;
-          max-width: 300px;
-          align-items: center;
+      &__mat-icon {
+        opacity: 0;
+        color: red;
+        font-size: 1rem;
 
-
-          &__word {
-            background-color: white;
-            padding: 5px;
-            border-radius: 5px;
-            cursor: pointer;
-          }
-        }
-
-        &__mat-icon {
-          opacity: 0;
-          color: red;
-          font-size: 1rem;
-
-          &--show { opacity: 1; }
-          &--correct { color: $cool-green; }
-        }
+        &--show { opacity: 1; }
+        &--correct { color: $cool-green; }
       }
     }
   }
 }
 
 @media (min-width: $min-desktop) {
-  .wrapper__column {
-    max-height: 200px;
-  }
+  .main { max-height: 200px; }
 }

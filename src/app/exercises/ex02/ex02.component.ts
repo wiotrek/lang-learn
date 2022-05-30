@@ -82,5 +82,8 @@ export class Ex02Component extends ExerciseAbstract
       list.words = ShuffleList(list.words);
       return list;
     });
+
+    // assign length of tasks
+    this.amount = this.workingList.length;
   }
 }

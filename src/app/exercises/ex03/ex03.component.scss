@@ -1,41 +1,35 @@
 @import "src/app/shared/style/variable";
 
-@media (min-width: 0) {
-  .wrapper__main {
-    margin-bottom: 20px;
+.main {
+  background-color: $cool-pastel-green;
+  padding: 15px 15px 5px 15px;
+  border-radius: 5px;
+  line-height: 35px;
+  max-width: 600px;
 
-    &__column {
-      background-color: $cool-pastel-green;
-      padding: 15px 15px 5px 15px;
+  &__sentence-container {
+    display: inline;
+
+    &__ch-word {
+      border: 0;
       border-radius: 5px;
-      line-height: 35px;
-      max-width: 600px;
+      margin: 0 5px;
+      padding: 5px;
+      cursor: pointer;
+      color: red;
 
-      &__sentence-container {
-        display: inline;
+      &:disabled { background-color: white; }
 
-        &__ch-word {
-          border: 0;
-          border-radius: 5px;
-          margin: 0 5px;
-          padding: 5px;
-          cursor: pointer;
-          color: red;
-
-          &:disabled { background-color: white; }
-
-          &--correct { color: $cool-green; }
-          &--not-check { color: black !important; }
-        }
-      }
-
-      &__copyright {
-        margin-top: 15px;
-        font-size: .7rem;
-        font-style: italic;
-        text-align: right;
-        line-height: 14px;
-      }
+      &--correct { color: $cool-green; }
+      &--not-check { color: black !important; }
     }
+  }
+
+  &__copyright {
+    margin-top: 15px;
+    font-size: .7rem;
+    font-style: italic;
+    text-align: right;
+    line-height: 14px;
   }
 }
