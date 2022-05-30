@@ -10,22 +10,28 @@ import { LangAvailableArray } from '../shared/arrays/lang-available.array';
 })
 export class ExercisesComponent implements OnDestroy {
 
+  // currently selected country
   chosenCountry: {
     name: string;
     display: string;
     flag: string;
   } | undefined;
 
+  // current exercise number
   exNumber: string | undefined;
+
+  // exclude list of languages
   langAvailable = LangAvailableArray;
 
-  subscription: Subscription | undefined;
+  // subscription for observables
+  private subscription: Subscription | undefined;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
 
+    // listen url, and check current exercise
     this.subscription = this.router.events
       .pipe(
         filter(event => event instanceof NavigationEnd),
@@ -46,7 +52,5 @@ export class ExercisesComponent implements OnDestroy {
       lang.name === localStorage.getItem('language'));
   }
 
-  ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
-  }
+  ngOnDestroy(): void { this.subscription?.unsubscribe(); }
 }

@@ -7,11 +7,11 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatInputModule } from "@angular/material/input";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { DragDropModule } from "@angular/cdk/drag-drop";
-import { CoreModule} from "../core/core.module";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { BrowserModule } from "@angular/platform-browser";
 import { TaskHeadlineComponent } from './components/task-headline/task-headline.component';
 import { UniversalExerciseComponent } from './components/universal-exercise/universal-exercise.component';
+import { FormsModule } from '@angular/forms';
+import { InternationalizationModule } from 'src/app/core/internationalization/internationalization.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,9 +20,10 @@ import { UniversalExerciseComponent } from './components/universal-exercise/univ
     UniversalExerciseComponent
   ],
   imports: [
+
     // angular core
-    BrowserAnimationsModule,
-    BrowserModule,
+    CommonModule,
+    FormsModule,
 
     // angular material
     MatToolbarModule,
@@ -33,18 +34,21 @@ import { UniversalExerciseComponent } from './components/universal-exercise/univ
     DragDropModule,
 
     // local plugins
-    CoreModule,
+    InternationalizationModule,
 
     // another plugins
     FontAwesomeModule
   ],
   exports: [
+
     // angular core
-    BrowserAnimationsModule,
-    BrowserModule,
+    CommonModule,
+    FormsModule,
 
     // declare components
     SummaryComponent,
+    TaskHeadlineComponent,
+    UniversalExerciseComponent,
 
     // angular material
     MatToolbarModule,
@@ -55,12 +59,10 @@ import { UniversalExerciseComponent } from './components/universal-exercise/univ
     DragDropModule,
 
     // local plugins
-    CoreModule,
+    InternationalizationModule,
 
     // another plugins
-    FontAwesomeModule,
-    TaskHeadlineComponent,
-    UniversalExerciseComponent
+    FontAwesomeModule
   ]
 })
 export class SharedModule {}
