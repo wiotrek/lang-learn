@@ -30,8 +30,14 @@
       color="accent"
       (click)="summaryEvents.emit('next')"
     >
-      {{'shared.components.summary.next-btn' | translate}}
+      {{
+        (isLastTask
+          ? 'shared.components.summary.last-task-btn'
+          : 'shared.components.summary.next-btn') | translate
+      }}
+
     </button>
+
   </div>
 
 </div>

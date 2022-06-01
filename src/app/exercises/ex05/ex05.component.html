@@ -1,8 +1,11 @@
+<ng-template appPlaceholder></ng-template>
+
 <app-universal-exercise
   [headline]="'Podaj odpowiednią nazwe koloru'"
   [isChecking]="isCheck"
   [amount]="amount"
   [score]="result"
+  [isLastTask]="true"
   (summaryEvents)="summaryEvents($event)"
 >
   <div class="main">
@@ -46,4 +49,5 @@
     </div>
 
   </div>
+
 </app-universal-exercise>

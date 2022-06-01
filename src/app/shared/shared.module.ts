@@ -12,12 +12,20 @@ import { UniversalExerciseComponent } from './components/universal-exercise/univ
 import { FormsModule } from '@angular/forms';
 import { InternationalizationModule } from 'src/app/core/internationalization/internationalization.module';
 import { CommonModule } from '@angular/common';
+import { PlaceholderDirective } from 'src/app/shared/directives/placeholder/placeholder.directive';
+import { ModalComponent } from './components/modal/modal/modal.component';
 
 @NgModule({
   declarations: [
+
+    // components
     SummaryComponent,
     TaskHeadlineComponent,
-    UniversalExerciseComponent
+    UniversalExerciseComponent,
+    ModalComponent,
+
+    // directives
+    PlaceholderDirective,
   ],
   imports: [
 
@@ -49,6 +57,13 @@ import { CommonModule } from '@angular/common';
     SummaryComponent,
     TaskHeadlineComponent,
     UniversalExerciseComponent,
+    ModalComponent,
+
+    // directives
+    PlaceholderDirective,
+
+    // local plugins
+    InternationalizationModule,
 
     // angular material
     MatToolbarModule,
@@ -57,9 +72,6 @@ import { CommonModule } from '@angular/common';
     MatMenuModule,
     MatInputModule,
     DragDropModule,
-
-    // local plugins
-    InternationalizationModule,
 
     // another plugins
     FontAwesomeModule

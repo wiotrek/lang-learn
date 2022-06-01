@@ -17,6 +17,7 @@ import { SummaryBtnType } from 'src/app/shared/components/summary/_types/summary
 
       <app-summary
         [isChecking]="isChecking"
+        [isLastTask]="isLastTask"
         (summaryEvents)="summaryEvents.emit($event)"
       ></app-summary>
 
@@ -37,6 +38,9 @@ export class UniversalExerciseComponent {
 
   // hidden next page btn if isChecking
   @Input() isChecking = false;
+
+  // special options if is finally task
+  @Input() isLastTask = false;
 
   // when emit some button - check, reset or next
   @Output() summaryEvents = new EventEmitter<SummaryBtnType>();

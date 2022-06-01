@@ -15,15 +15,13 @@
         "cow": "Cow",
         "dragon": "Dragon",
         "crow": "Crow"
-      },
-      "buttons": {
-        "check-btn": "check task",
-        "reset-btn": "reset",
-        "next-btn": "Go to next task"
-      },
-      "summary": {
-        "next-page": "Congratulations you can go to next",
-        "result": "Your result: "
+      }
+    },
+    "ex05": {
+      "modal": {
+        "header": "Congratulations You have {{val1}} points",
+        "caption": "unfortunately this is end",
+        "end-btn": "Go to homepage"
       }
     }
   },
@@ -32,7 +30,8 @@
       "summary": {
         "check-btn": "Check task",
         "reset-btn": "Reset",
-        "next-btn": "Go to the next task"
+        "next-btn": "Go to the next task",
+        "last-task-btn": "Exit"
       },
       "task-headline": {
         "result": "Your result: "

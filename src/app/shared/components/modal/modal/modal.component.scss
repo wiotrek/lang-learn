@@ -1,0 +1,59 @@
+@import "src/app/shared/style/variable";
+
+@media (min-width: 0) {
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 50;
+    opacity: .8;
+  }
+
+  .wrapper {
+    left: 0;
+    width: 80vw;
+    margin: 0 10vw;
+    background-color: #fff;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    padding: 20px 0;
+
+    &__header {
+      margin: 0;
+      text-align: center;
+    }
+
+    &__caption {
+      color: $cool-green;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      mat-icon {
+        margin-left: 5px;
+        font-size: 1.5rem;
+        vertical-align: center;
+      }
+    }
+
+    &__center-btn {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+@media (min-width: $min-desktop) {
+ .wrapper {
+   width: 500px;
+   left: auto;
+   margin: 0 0 0 200px;
+   padding: 20px 40px;
+ }
+}

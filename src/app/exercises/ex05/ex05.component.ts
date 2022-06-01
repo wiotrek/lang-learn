@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import { ColorListArray } from 'src/app/exercises/ex05/_arrays/color-list.array';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ColorListModel } from 'src/app/exercises/ex05/_models/color-list.model';
 import { IExerciseModel } from 'src/app/shared/interfaces/i-exercise.model';
 import { ExerciseAbstract } from 'src/app/shared/abstarcts/exercise.abstract';
+import { PlaceholderDirective } from 'src/app/shared/directives/placeholder/placeholder.directive';
+import { ModalComponent } from 'src/app/shared/components/modal/modal/modal.component';
 
 @Component({
   selector: 'app-ex05',
@@ -13,12 +15,16 @@ import { ExerciseAbstract } from 'src/app/shared/abstarcts/exercise.abstract';
 export class Ex05Component extends ExerciseAbstract
   implements IExerciseModel<ColorListModel> {
 
+  @ViewChild(PlaceholderDirective, { static: false })
+  modalHost: PlaceholderDirective | undefined;
+
   // main list to working
   workingList: ColorListModel[] = ColorListArray;
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private componentFactoryResolver: ComponentFactoryResolver
   ) {
     super(false, 0, ColorListArray.length);
   }
@@ -55,9 +61,27 @@ export class Ex05Component extends ExerciseAbstract
     this.isCheck = false;
   }
 
+  // open modal component
   next(): void {
-    this.router.navigate([''], {
-      relativeTo: this.activatedRoute
-    }).then();
+
+    const modalCmpFactory = this.componentFactoryResolver
+      .resolveComponentFactory(ModalComponent);
+
+    if (this.modalHost) {
+      const hostViewContainerRef = this.modalHost.viewContainerRef;
+      hostViewContainerRef.clear();
+
+      const componentRef = hostViewContainerRef
+        .createComponent<ModalComponent>(modalCmpFactory);
+
+      componentRef.instance.closeModal.subscribe(() => {
+
+        hostViewContainerRef.clear();
+
+        this.router.navigate(
+          ['/'], { relativeTo: this.activatedRoute }
+        ).then();
+      });
+    }
   }
 }

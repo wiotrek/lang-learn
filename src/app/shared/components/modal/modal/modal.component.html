@@ -1,0 +1,27 @@
+<div class="backdrop"></div>
+
+<div class="wrapper">
+
+  <h2 class="wrapper__header">
+    {{'exercises.ex05.modal.header' | translate: { val1: result } }}
+  </h2>
+
+  <p class="wrapper__caption">
+    {{'exercises.ex05.modal.caption' | translate}}
+    <mat-icon inline="true">sentiment_dissatisfied</mat-icon>
+  </p>
+
+  <div class="wrapper__center-btn">
+
+    <button
+      class="wrapper__center-btn__end-btn"
+      (click)="closeModal.emit()"
+      mat-raised-button
+      color="primary"
+    >
+      {{'exercises.ex05.modal.end-btn' | translate}}
+    </button>
+
+  </div>
+
+</div>

@@ -11,6 +11,9 @@ export class SummaryComponent {
   // hidden next page btn if isChecking
   @Input() isChecking = false;
 
+  // special options if is finally task
+  @Input() isLastTask = false;
+
   // when emit some button - check, reset or next
   @Output() summaryEvents = new EventEmitter<SummaryBtnType>();
 }
