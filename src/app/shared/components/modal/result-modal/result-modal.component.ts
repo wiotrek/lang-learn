@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  selector: 'app-result-modal',
+  templateUrl: './result-modal.component.html',
+  styleUrls: ['./result-modal.component.scss']
 })
-export class ModalComponent {
+export class ResultModalComponent {
 
   // display user score
   @Input() result = 0;

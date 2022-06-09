@@ -13,7 +13,9 @@ import { FormsModule } from '@angular/forms';
 import { InternationalizationModule } from 'src/app/core/internationalization/internationalization.module';
 import { CommonModule } from '@angular/common';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder/placeholder.directive';
-import { ModalComponent } from './components/modal/modal/modal.component';
+import { ResultModalComponent } from 'src/app/shared/components/modal/result-modal/result-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { SimpleDialogComponent } from './components/modal/simple-dialog/simple-dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,10 +24,11 @@ import { ModalComponent } from './components/modal/modal/modal.component';
     SummaryComponent,
     TaskHeadlineComponent,
     UniversalExerciseComponent,
-    ModalComponent,
+    ResultModalComponent,
+    SimpleDialogComponent,
 
     // directives
-    PlaceholderDirective,
+    PlaceholderDirective
   ],
   imports: [
 
@@ -40,6 +43,7 @@ import { ModalComponent } from './components/modal/modal/modal.component';
     MatMenuModule,
     MatInputModule,
     DragDropModule,
+    MatDialogModule,
 
     // local plugins
     InternationalizationModule,
@@ -57,7 +61,8 @@ import { ModalComponent } from './components/modal/modal/modal.component';
     SummaryComponent,
     TaskHeadlineComponent,
     UniversalExerciseComponent,
-    ModalComponent,
+    ResultModalComponent,
+    SimpleDialogComponent,
 
     // directives
     PlaceholderDirective,

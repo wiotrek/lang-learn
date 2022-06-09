@@ -5,7 +5,7 @@ import { ColorListModel } from 'src/app/exercises/ex05/_models/color-list.model'
 import { IExerciseModel } from 'src/app/shared/interfaces/i-exercise.model';
 import { ExerciseAbstract } from 'src/app/shared/abstarcts/exercise.abstract';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder/placeholder.directive';
-import { ModalComponent } from 'src/app/shared/components/modal/modal/modal.component';
+import { ResultModalComponent } from 'src/app/shared/components/modal/result-modal/result-modal.component';
 
 @Component({
   selector: 'app-ex05',
@@ -61,18 +61,18 @@ export class Ex05Component extends ExerciseAbstract
     this.isCheck = false;
   }
 
-  // open modal component
+  // open result-modal component
   next(): void {
 
     const modalCmpFactory = this.componentFactoryResolver
-      .resolveComponentFactory(ModalComponent);
+      .resolveComponentFactory(ResultModalComponent);
 
     if (this.modalHost) {
       const hostViewContainerRef = this.modalHost.viewContainerRef;
       hostViewContainerRef.clear();
 
       const componentRef = hostViewContainerRef
-        .createComponent<ModalComponent>(modalCmpFactory);
+        .createComponent<ResultModalComponent>(modalCmpFactory);
 
       componentRef.instance.closeModal.subscribe(() => {
 
