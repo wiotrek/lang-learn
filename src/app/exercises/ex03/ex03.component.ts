@@ -10,6 +10,8 @@ import { first, Subscription } from "rxjs";
 import { Answers, WorkingTextModel } from "./_models/working-text.model";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ExerciseAbstract } from 'src/app/shared/abstarcts/exercise.abstract';
+import { LocalizationService } from 'src/app/core/internationalization/_services/localization.service';
+import { ExercisesService } from 'src/app/exercises/_services/exercises.service';
 
 @Component({
   selector: 'app-ex03',
@@ -36,7 +38,9 @@ export class Ex03Component extends ExerciseAbstract
   constructor(
     private ex03Service: Ex03Service,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private localizationService: LocalizationService,
+    private exercisesService: ExercisesService
   ) {
     super(false, 0, 0);
   }
@@ -72,6 +76,10 @@ export class Ex03Component extends ExerciseAbstract
       (acc: number, curr: { id: number, val: string }) =>
         acc + (curr.val === this.answers[curr.id].correct ? 1 : 0), 0
     );
+
+    this.exercisesService.setResultToLocalStorage(
+      this.localizationService.localeId, 'ex-03', 3, this.result
+    );
   }
 
   next(): void {
@@ -93,7 +101,10 @@ export class Ex03Component extends ExerciseAbstract
     this.clearWorkingAnswers(this.answers.length);
   }
 
-  ngOnDestroy() { this.subscription?.unsubscribe(); }
+  ngOnDestroy() {
+    this.reset();
+    this.subscription?.unsubscribe();
+  }
 
   // assign empty value to working list
   private clearWorkingAnswers(amountToClear: number): void {

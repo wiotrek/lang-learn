@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { DigitListArray } from 'src/app/exercises/ex04/_arrays/digit-list.array';
 import { ShuffleList } from 'src/app/shared/utils/shuffle-list.helper';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ExerciseAbstract } from 'src/app/shared/abstarcts/exercise.abstract';
 import { IExerciseModel } from 'src/app/shared/interfaces/i-exercise.model';
 import { WorkingElementModel } from 'src/app/shared/models/working-element.model';
+import { LocalizationService } from 'src/app/core/internationalization/_services/localization.service';
+import { ExercisesService } from 'src/app/exercises/_services/exercises.service';
 
 @Component({
   selector: 'app-ex04',
@@ -13,14 +15,16 @@ import { WorkingElementModel } from 'src/app/shared/models/working-element.model
   styleUrls: ['./ex04.component.scss']
 })
 export class Ex04Component extends ExerciseAbstract
- implements IExerciseModel<WorkingElementModel> {
+ implements IExerciseModel<WorkingElementModel>, OnDestroy {
 
   // main list for working
   workingList: WorkingElementModel[] = ShuffleList(DigitListArray);
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private localizationService: LocalizationService,
+    private exercisesService: ExercisesService
   ) {
     super(false, 0, DigitListArray.length);
   }
@@ -38,6 +42,10 @@ export class Ex04Component extends ExerciseAbstract
     this.result = this.workingList.reduce(
       (acc: number, curr: WorkingElementModel, ind: number) =>
         acc + (curr.id === ind + 1 ? 1 : 0), 0
+    );
+
+    this.exercisesService.setResultToLocalStorage(
+      this.localizationService.localeId, 'ex-04', 4, this.result
     );
   }
 
@@ -61,4 +69,6 @@ export class Ex04Component extends ExerciseAbstract
     // set off isCheck
     this.isCheck = false;
   }
+
+  ngOnDestroy(): void { this.reset(); }
 }

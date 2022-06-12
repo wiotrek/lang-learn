@@ -5,6 +5,7 @@ import { LocalizationService } from '../core/internationalization/_services/loca
 import { LangAvailableArray } from '../shared/arrays/lang-available.array';
 import { MatDialog } from '@angular/material/dialog';
 import { SimpleDialogComponent } from 'src/app/shared/components/modal/simple-dialog/simple-dialog.component';
+import { ExercisesService } from 'src/app/exercises/_services/exercises.service';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,7 @@ export class HomeComponent implements OnDestroy {
     @Inject(DOCUMENT) private document: any,
     private localizationService: LocalizationService,
     private router: Router,
+    private exercisesService: ExercisesService,
     public dialog: MatDialog
   ) {
 
@@ -52,7 +54,10 @@ export class HomeComponent implements OnDestroy {
       return;
     }
 
-    this.router.navigate(['exercises']);
+    // go to last exist exercise
+    const path = this.exercisesService.getRecentlyExercise(lang) ?? ''
+
+    this.router.navigate(['exercises/' + path]).then();
   }
 
   ngOnDestroy(): void {

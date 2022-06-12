@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AnimalIconsArray } from "./_arrays/animal-icons.array";
 import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import { AnimalModel } from "./_models/animal.model";
 import { AnimalNameModel } from "./_models/animal-name.model";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ExerciseAbstract } from 'src/app/shared/abstarcts/exercise.abstract';
+import { ExercisesService } from 'src/app/exercises/_services/exercises.service';
+import { LocalizationService } from 'src/app/core/internationalization/_services/localization.service';
 
 @Component({
   selector: 'app-ex01',
   templateUrl: './ex01.component.html',
   styleUrls: ['./ex01.component.scss']
 })
-export class Ex01Component extends ExerciseAbstract {
+export class Ex01Component extends ExerciseAbstract
+  implements OnDestroy {
 
   // list of animal object with nested object
   listOfAnimalObj: AnimalModel[];
@@ -22,7 +25,9 @@ export class Ex01Component extends ExerciseAbstract {
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private localizationService: LocalizationService,
+    private exercisesService: ExercisesService
   ) {
 
     super(false, 0, AnimalIconsArray.length);
@@ -45,6 +50,10 @@ export class Ex01Component extends ExerciseAbstract {
     this.result = this.listOfAnimalObj.reduce(
       (acc: number, curr: AnimalModel) =>
         acc + (curr.id === curr.dropAnimal.id ? 1 : 0), 0
+    );
+
+    this.exercisesService.setResultToLocalStorage(
+      this.localizationService.localeId, 'ex-01', 1, this.result
     );
   }
 
@@ -109,6 +118,8 @@ export class Ex01Component extends ExerciseAbstract {
       }
     ).then();
   }
+
+  ngOnDestroy(): void { this.reset(); }
 
   // mapping main animal list to get only id and display txt
   private clearListOfAnimalNameList(): AnimalNameModel[] {

@@ -24,22 +24,12 @@
     padding: 20px 0;
 
     &__header {
-      margin: 0;
       text-align: center;
-    }
-
-    &__caption {
       color: $cool-green;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      mat-icon {
-        margin-left: 5px;
-        font-size: 1.5rem;
-        vertical-align: center;
-      }
+      margin-bottom: 10px;
     }
+
+    &__main {text-align: center; }
 
     &__center-btn {
       margin-top: 20px;

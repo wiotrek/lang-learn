@@ -12,7 +12,7 @@ export const LanguagesDirectory: { [key: string]: string } = {
 // Class representing the translation service
 @Injectable()
 export class LocalizationService {
-  private localeId = 'en-US'; // default
+  public localeId = 'en-US'; // default
 
   constructor(
     @Optional() @SkipSelf() private singleton: LocalizationService,

@@ -6,10 +6,16 @@
     {{'exercises.ex05.modal.header' | translate: { val1: result } }}
   </h2>
 
-  <p class="wrapper__caption">
-    {{'exercises.ex05.modal.caption' | translate}}
-    <mat-icon inline="true">sentiment_dissatisfied</mat-icon>
-  </p>
+  <div class="wrapper__main">
+
+    <p
+      class="wrapper__main__element"
+      *ngFor="let ex of exerciseResult"
+    >
+      {{'Zadanie ' + ex.sequence + ': ' + ex.points + 'pkt'}}
+    </p>
+
+  </div>
 
   <div class="wrapper__center-btn">
 

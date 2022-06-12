@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ShuffleWordsHelper } from "./_utils/shuffle-words.helper";
 import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 import { ShuffleList } from "../../shared/utils/shuffle-list.helper";
@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ExerciseAbstract } from 'src/app/shared/abstarcts/exercise.abstract';
 import { WordModel } from 'src/app/exercises/ex02/_models/word.model';
 import { IExerciseModel } from 'src/app/shared/interfaces/i-exercise.model';
+import { LocalizationService } from 'src/app/core/internationalization/_services/localization.service';
+import { ExercisesService } from 'src/app/exercises/_services/exercises.service';
 
 @Component({
   selector: 'app-ex02',
@@ -23,7 +25,9 @@ export class Ex02Component extends ExerciseAbstract
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private localizationService: LocalizationService,
+    private exercisesService: ExercisesService
   ) {
     super(false, 0, 0);
   }
@@ -54,6 +58,10 @@ export class Ex02Component extends ExerciseAbstract
         acc + (this.correctListOfWords[
           curr.id - 1
         ].words.toString() === curr.words.toString() ? 1 : 0), 0
+    );
+
+    this.exercisesService.setResultToLocalStorage(
+      this.localizationService.localeId, 'ex-02', 2, this.result
     );
   }
 
