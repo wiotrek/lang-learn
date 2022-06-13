@@ -1,0 +1,51 @@
+{
+  "home": {
+    "lang-not-exist": "Selected language is not exist yet",
+    "modal": {
+      "dialog": {
+        "header": "System problem",
+        "description": "This language not exist yet",
+        "back": "Back"
+      }
+    }
+  },
+  "exercises": {
+    "intro": {
+      "choice": "Selected language: English"
+    },
+    "ex01": {
+      "animals": {
+        "dog": "Dog",
+        "cat": "Cat",
+        "frog": "Frog",
+        "bug": "Bug",
+        "fish": "Fish",
+        "hippo": "Hippopotamus",
+        "horse": "Horse",
+        "cow": "Cow",
+        "dragon": "Dragon",
+        "crow": "Crow"
+      }
+    },
+    "ex05": {
+      "modal": {
+        "header": "Congratulations You have {{val1}} points",
+        "caption": "unfortunately this is end",
+        "end-btn": "Go to homepage"
+      }
+    }
+  },
+  "shared": {
+    "components": {
+      "summary": {
+        "check-btn": "Check task",
+        "reset-btn": "Reset",
+        "next-btn": "Go to the next task",
+        "last-task-btn": "Exit"
+      },
+      "task-headline": {
+        "result": "Your result: "
+      }
+    }
+  }
+}

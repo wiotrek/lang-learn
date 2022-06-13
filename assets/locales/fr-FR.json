@@ -1,0 +1,17 @@
+{
+  "home": {
+    "lang-not-exist": "La langue sélectionnée n'existe pas encore",
+    "modal": {
+      "dialog": {
+        "header": "Problème système",
+        "description": "Cette langue n'existe pas encore",
+        "back": "Retour"
+      }
+    }
+  },
+  "exercises": {
+    "intro": {
+      "choice": "Vous avez choisi le français"
+    }
+  }
+}
