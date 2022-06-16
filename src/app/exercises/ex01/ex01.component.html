@@ -37,9 +37,9 @@
           class="main__column__element__mat-icon"
           [ngClass]="{
             'main__column__element__mat-icon--show': isCheck,
-            'main__column__element__mat-icon--correct': el.dropAnimal.id == el.id
+            'main__column__element__mat-icon--correct': el.dropAnimal.id === el.id
           }"
-        >{{el.dropAnimal.id == el.id ? 'done' : 'warning'}}</mat-icon>
+        >{{el.dropAnimal.id === el.id ? 'done' : 'warning'}}</mat-icon>
 
       </li>
 
